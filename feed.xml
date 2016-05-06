@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Arpith K</title>
+    <description>I am a research student in the department of Computer Science and Automation at  Indian Institute of Science (IISc). Welcome to my site.
+</description>
+    <link>http://arpith.xyz/</link>
+    <atom:link href="http://arpith.xyz/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 06 May 2016 17:45:36 +0530</pubDate>
+    <lastBuildDate>Fri, 06 May 2016 17:45:36 +0530</lastBuildDate>
+    <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>The World of Exponentials</title>
+        <description>&lt;p&gt;&lt;img width=&quot;150px&quot; height=&quot;180px&quot; src=&quot;http://arpith.xyz/images/ExponentialGrowth.jpg&quot; align=&quot;left&quot; /&gt;
+To learn the mathematical power  of exponents and exponential curves, school children in France were asked to imagine a pond with a small water lily leaf growing on it. The leaf, they were told, would double in size every day and would take thirty days to cover the entire pond. If the lily did cover the pond, it would smother and kill all other forms of life in the water. The question then posted to the children was, on what day will the lily cover half the pond?&lt;/p&gt;
+
+&lt;p&gt;At first, there wasn’t much to worry about. The lily grew at a rate that was barely noticeable, reaching only one-tenth of 1 percent of the pond covered by day 20. Just 0.1 percent. Five days later, it had reached 3 percent, but, still relatively uncovered, the children let the lily continue to grow. Until suddenly, at day 29, the lily covered half the pond. By then, there was precious little time to save the pond, which was strangled by the lily the very next day.&lt;/p&gt;
+
+&lt;p&gt;The twenty-ninth day can ofter seem like any other day, but given the nature of exponentials, the pond is already half-chocked to death.&lt;/p&gt;
+
+&lt;p&gt;The lessons of the pond are that the magical nature of exponential growth can sneak up on us very, very quickly and that our continued linear thinking can come at out own peril.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;–Chapter 3: Moore’s Outlaws; &lt;a href=&quot;http://www.goodreads.com/book/show/22318398-future-crimes&quot; target=&quot;_blank&quot;&gt;Future Crimes&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 06 May 2016 00:00:00 +0530</pubDate>
+        <link>http://arpith.xyz/2016/05/the-world-of-exponentials</link>
+        <guid isPermaLink="true">http://arpith.xyz/2016/05/the-world-of-exponentials</guid>
+        
+        
+        <category>insperation</category>
+        
+      </item>
+    
+      <item>
+        <title>Life Explained in 27 Seconds</title>
+        <description>&lt;center&gt;
+&lt;div class=&quot;embed twitter&quot;&gt;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Life is like going the wrong way on a moving walkway. Stand still and you go backwards. Walk and you stay put. Gotta hustle to get ahead. P&lt;/p&gt;&amp;mdash; Farrelly Brothers (@farrellybros) &lt;a href=&quot;https://twitter.com/farrellybros/status/407787314597728256&quot;&gt;December 3, 2013&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&lt;/div&gt;
+&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;iframe src=&quot;https://www.youtube.com/embed/L9VBpbnXhWk&quot; width=&quot;100%&quot; height=&quot;480&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;allowfullscreen&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Live as if it were impossible to fail&lt;/p&gt;
+
+  &lt;p&gt;– &lt;cite&gt;Casey Neistat&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Wed, 03 Feb 2016 00:00:00 +0530</pubDate>
+        <link>http://arpith.xyz/2016/02/life-in-27-seconds</link>
+        <guid isPermaLink="true">http://arpith.xyz/2016/02/life-in-27-seconds</guid>
+        
+        
+        <category>insperation</category>
+        
+      </item>
+    
+      <item>
+        <title>Research Interviews at IITM and IISc</title>
+        <description>&lt;h2 id=&quot;table-of-contents&quot;&gt;Table Of Contents&lt;/h2&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#table-of-contents&quot; id=&quot;markdown-toc-table-of-contents&quot;&gt;Table Of Contents&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#interview-experience-for-ms-computer-science-course-in-iit-madras&quot; id=&quot;markdown-toc-interview-experience-for-ms-computer-science-course-in-iit-madras&quot;&gt;Interview experience for MS (Computer Science) course in IIT Madras&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#interview-experience-for-msc-engineering-in-computer-science-and-automation-in-iisc&quot; id=&quot;markdown-toc-interview-experience-for-msc-engineering-in-computer-science-and-automation-in-iisc&quot;&gt;Interview Experience for MSc Engineering in Computer Science and Automation in IISc&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;It sometimes surprises me to see how things just fall into place. It was always my dream to work as a researcher, but never knew about the research courses offered by various institutes like IISc (MSc Engineering) or IIT Madras (MS) among others.&lt;/p&gt;
+
+&lt;p&gt;I didn’t perform satisfactorily in my GATE exam and secured a rank of 622. I screwed up my solutions for easiest of questions in aptitude section. Trust me, being in this position sucks, because even after solving the hardest of technical problems correctly, I thought that I had lost my chance of studying in premier &lt;em&gt;technical&lt;/em&gt; institutes!&lt;/p&gt;
+
+&lt;p&gt;Well, some might say that this score is excellent considering that over 1.25 lakh students write this exam in Computer Science branch alone (over 1 million, all branches combined, just in case you were curious), but the harsh reality is that being categorized as a ‘general student’ (as opposed to SC/ST) reduces the chance of securing a seat in top institutes in India. The only way I could get admitted to MTech course in these institutes would be if most of the 621 students who had performed better than me suffered from a mental disease and forfeit their seats :P. Well obviously, such a situation in the year of 2015 is highly improbable and so I began searching for alternatives which would either mean applying for a job or to accept defeat and take admission in less desired NITs or other (not so desired) private institutes.&lt;/p&gt;
+
+&lt;p&gt;Now, this was when I heard about the research programs offered by the ‘&lt;em&gt;desirable&lt;/em&gt;’ institutes that I was talking about. Looking at the cutoff scores of previous years, I still had a chance. But one hurdle remained (well, two). Most of the institutes that accept research students conduct another written round followed by an interview. I applied for MS course in IIT Madras and MSc (Engineering) in IISc Bangalore.&lt;/p&gt;
+
+&lt;h2 id=&quot;interview-experience-for-ms-computer-science-course-in-iit-madras&quot;&gt;Interview experience for MS (Computer Science) course in IIT Madras&lt;/h2&gt;
+
+&lt;p&gt;The written round was conducted on the 4&lt;sup&gt;th&lt;/sup&gt; day of May 2015 and everyone who had scored more than 600 in GATE were considered eligible for this exam.&lt;/p&gt;
+
+&lt;p&gt;It consisted of two rounds of one and half hours each. The first round (Part A) constituted of objective questions that tested your aptitude, technical, mathematical and lingual abilities (confined to English &lt;em&gt;phew&lt;/em&gt;). If I remember correctly, this round consisted of 25 questions pertaining to analytical ability (Basic Engineering Mathematics, Probability and Statistics, Ratio and proportion, Combinatorics, Technical Comprehension), C-Programming and Basic Discrete Mathematics (Logic, Sets, Relations, Functions).&lt;/p&gt;
+
+&lt;p&gt;Part B consisted of 20 subjective questions, the intention of which was to test the technical knowledge pertaining to a specific area in-depth. These ‘areas’ as they call it is classified as follows:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;Area-1: Data Structures, Algorithms and Programming.&lt;/li&gt;
+	&lt;li&gt;Area-2: Digital Logic, Computer Organization and Operating Systems.&lt;/li&gt;
+	&lt;li&gt;Area-3: Formal Language and Automata Theory, Advanced Discrete Mathematics, Artificial Intelligence.&lt;/li&gt;
+	&lt;li&gt;Area-4: Data bases, Networking and Compilers.&lt;/li&gt;
+	&lt;li&gt;Area-5: Signal and Systems, Continuous Mathematics and Probability and Random Processes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The results of the written round was announced on the same day in the afternoon. Out of ~400 students who had attended this exam around 40 were selected.&lt;/p&gt;
+
+&lt;p&gt;The interview round was conducted for the selected candidates on 6&lt;sup&gt;th&lt;/sup&gt; May after verifying their documents. The panel consisted of around 10 professors. The students were being asked to choose their favorite subject. I chose Computer Architecture and Operating Systems. For me, their questions tested my in-depth understanding on the concepts of cache, pipelining and processes (OS). Most of the questions that I was asked were on cache. In my opinion everything that could have been asked regarding cache concept was asked. Few questions were direct and easy but most of them test the candidate’s ability to think on the spot once presented with a problem.&lt;/p&gt;
+
+&lt;p&gt;The final result was announced on 15&lt;sup&gt;th&lt;/sup&gt; May 2015. The results were announced in a public domain and &lt;a href=&quot;https://drive.google.com/file/d/0B61DWhik0jONUzhPZDhPdFBRS3M/view?usp=sharing&quot; target=&quot;_blank&quot; data-blogger-escaped-target=&quot;_blank&quot;&gt;here’s&lt;/a&gt; a mirror of the same.&lt;/p&gt;
+
+&lt;p&gt;As far as stay is concerned in Madras, you have multiple options. The best option is to get yourself a room booked in Taramani Guest house. Here, the rooms are air-conditioned and comfortable with clean attached bathrooms. I was charged Rs 800 for a room per night. However, it’s very difficult to get a booking here since the number of rooms is very sparse and most of you will have to look for other options.&lt;/p&gt;
+
+&lt;p&gt;The second alternative is to opt into the college hostel. If you are one of the pampered kind and comfort is your first priority, then this place will be complete nightmare. My friends who had stayed there were provided a room with a bed but without a mattress. Even though I did not stay here, from those who did, the reviews were mostly negative. They were charged Rs350 per night. You are however guaranteed a roof over your head in a safe environment in the proximity of place where you will be interviewed. For most students this should be sufficient.&lt;/p&gt;
+
+&lt;p&gt;The last option is to book a room in a hotel near IIT Madras. This will probably be the costliest of the three options but can potentially be the most comfortable in terms of stay. But note that IIT Madras is a very large campus and being close to IIT need not necessarily mean you are close to your department. You’ll have to make your own arrangements to reach the respective departments and transportation like auto rickshaws or yellow cabs in Chennai is not cheap. Also interacting with people outside of IIT can be an issue for someone who don’t speak Tamil. Hardly anyone understand (or choose to understand) Hindi and they barely speak English. I would personally not choose this option and since I prefer the safety if IIT over fumbling around in an unknown city, but to each their own.&lt;/p&gt;
+
+&lt;h2 id=&quot;interview-experience-for-msc-engineering-in-computer-science-and-automation-in-iisc&quot;&gt;Interview Experience for MSc Engineering in Computer Science and Automation in IISc&lt;/h2&gt;
+
+&lt;p&gt;Similar to the case of IIT Madras, only students who clear a specified cutoff in GATE exam are allowed to write the first round of written exam. The cutoff for computer science students in the year of 2015 was 664 (for other departments &lt;a href=&quot;https://drive.google.com/file/d/0B61DWhik0jONTVh4bFdJcVFNeFU/view?usp=sharing&quot; target=&quot;_blank&quot;&gt;click here&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Unlike the case of IIT Madras, not all eligible students were interviewed on the same day. This was spread over a span of 5 days (2&lt;sup&gt;nd&lt;/sup&gt; to 6&lt;sup&gt;th&lt;/sup&gt; June). I was called for my interview on 5&lt;sup&gt;th&lt;/sup&gt; of June 2015 (at 9AM).&lt;/p&gt;
+
+&lt;p&gt;To qualify, you are expected to know your area of interest beforehand. They broadly classify this into three categories which are as follows:&lt;/p&gt;
+&lt;ul&gt;
+	&lt;li&gt;Theoretical Computer Science&lt;/li&gt;
+	&lt;li&gt;Computer Systems and&lt;/li&gt;
+	&lt;li&gt;Intelligent Systems&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You are given a form in which you are expected to fill in your details and specify the area of interest, sub area and background subject. Follow &lt;a href=&quot;https://drive.google.com/file/d/0B61DWhik0jONSUxNcWVuTTFIZG8/view?usp=sharing&quot; target=&quot;_blank&quot; data-blogger-escaped-target=&quot;_blank&quot;&gt;this link&lt;/a&gt; to view the form.&lt;/p&gt;
+
+&lt;p&gt;The table in page 2 will help you make this decision.&lt;/p&gt;
+
+&lt;p&gt;After filling this form, I was escorted to a lobby where around 32 students were to be seated to answer an objective question paper. All questions were technical pertaining to the subject of Engineering Mathematics, Computer Architecture, Operating Systems and C Programming among others. There were 15 questions that they expected us to solve in 40 minutes.&lt;/p&gt;
+
+&lt;p&gt;The results was announced within the next half hour. Unlike IIT Madras, almost everyone (80 percent) was interviewed by the faculty of respective subjects.&lt;/p&gt;
+
+&lt;p&gt;I chose computer architecture and operating system as my areas of interest (they both belong to computer systems category). Also, data structures and computer organization were my background subject.&lt;/p&gt;
+
+&lt;p&gt;My interview lasted for around 30-45 minutes. Most of the questions that I was asked were from data structures, algorithms and a few from computer organization.&lt;/p&gt;
+
+&lt;p&gt;Some of the problems were tricky and require on the spot thinking. The faculty is absolutely friendly and will go out of their way to put a student at ease and make oneself comfortable. They will repeatedly give you pointers whenever you stumble upon a problem. They also give enough room to correct yourself in case you answer a problem incorrectly in the first try.&lt;/p&gt;
+
+&lt;p&gt;The results were soon announced in their webpage. But a word of caution. At IISc, you are not guaranteed a seat even if your application number is listed in their site. Most of them are just waitlisted (I’ll try to break this news without sounding too harsh, in a college such as this, being wait-listed is same as not being selected, now comon!). You know you are selected when you officially receive a call letter from them via email. Much to the surprise everyone, very few candidates were selected for research programs (MSc and PhD) this year.&lt;/p&gt;
+
+&lt;p&gt;Here are some statistics for the ones who are interested:&lt;/p&gt;
+&lt;table data-blogger-escaped-style=&quot;border-collapse: collapse; border: none; mso-border-alt: solid windowtext .5pt; mso-padding-alt: 0in 5.4pt 0in 5.4pt; mso-yfti-tbllook: 1184;&quot;&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td width=&quot;208&quot; data-blogger-escaped-style=&quot;border: solid windowtext 1.0pt; mso-border-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt; width: 155.8pt;&quot;&gt;&lt;strong&gt;Course&lt;/strong&gt;&lt;/td&gt;
+&lt;td width=&quot;208&quot; data-blogger-escaped-style=&quot;border-left: none; border: solid windowtext 1.0pt; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt; width: 155.85pt;&quot;&gt;&lt;strong&gt;Branch&lt;/strong&gt;&lt;/td&gt;
+&lt;td width=&quot;208&quot; data-blogger-escaped-style=&quot;border-left: none; border: solid windowtext 1.0pt; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt; width: 155.85pt;&quot;&gt;&lt;strong&gt;No of students selected&lt;/strong&gt;
+
+&lt;strong&gt;(2015)&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td rowspan=&quot;3&quot; width=&quot;208&quot; data-blogger-escaped-style=&quot;border-top: none; border: solid windowtext 1.0pt; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt; width: 155.8pt;&quot;&gt;MSc Engg (CSA)&lt;/td&gt;
+&lt;td width=&quot;208&quot; data-blogger-escaped-style=&quot;border-bottom: solid windowtext 1.0pt; border-left: none; border-right: solid windowtext 1.0pt; border-top: none; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt; width: 155.85pt;&quot;&gt;Theoretical CS&lt;/td&gt;
+&lt;td width=&quot;208&quot; data-blogger-escaped-style=&quot;border-bottom: solid windowtext 1.0pt; border-left: none; border-right: solid windowtext 1.0pt; border-top: none; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt; width: 155.85pt;&quot;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td width=&quot;208&quot; data-blogger-escaped-style=&quot;border-bottom: solid windowtext 1.0pt; border-left: none; border-right: solid windowtext 1.0pt; border-top: none; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt; width: 155.85pt;&quot;&gt;Computer Systems&lt;/td&gt;
+&lt;td width=&quot;208&quot; data-blogger-escaped-style=&quot;border-bottom: solid windowtext 1.0pt; border-left: none; border-right: solid windowtext 1.0pt; border-top: none; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt; width: 155.85pt;&quot;&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td width=&quot;208&quot; data-blogger-escaped-style=&quot;border-bottom: solid windowtext 1.0pt; border-left: none; border-right: solid windowtext 1.0pt; border-top: none; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt; width: 155.85pt;&quot;&gt;Intelligent Systems&lt;/td&gt;
+&lt;td width=&quot;208&quot; data-blogger-escaped-style=&quot;border-bottom: solid windowtext 1.0pt; border-left: none; border-right: solid windowtext 1.0pt; border-top: none; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt; width: 155.85pt;&quot;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot; width=&quot;416&quot; data-blogger-escaped-style=&quot;border-top: none; border: solid windowtext 1.0pt; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt; width: 311.65pt;&quot;&gt;PhD&lt;/td&gt;
+&lt;td width=&quot;208&quot; data-blogger-escaped-style=&quot;border-bottom: solid windowtext 1.0pt; border-left: none; border-right: solid windowtext 1.0pt; border-top: none; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt; width: 155.85pt;&quot;&gt;7&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot; width=&quot;416&quot; data-blogger-escaped-style=&quot;border-top: none; border: solid windowtext 1.0pt; mso-border-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt; width: 311.65pt;&quot;&gt;Total&lt;/td&gt;
+&lt;td width=&quot;208&quot; data-blogger-escaped-style=&quot;border-bottom: solid windowtext 1.0pt; border-left: none; border-right: solid windowtext 1.0pt; border-top: none; mso-border-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-top-alt: solid windowtext .5pt; padding: 0in 5.4pt 0in 5.4pt; width: 155.85pt;&quot;&gt;15&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;All the best for everyone preparing for interviews. Have a good one!
+Feel free to contact me via the comments below or my mail for any queries that you may have or for improvements and corrections to the text above.&lt;/p&gt;
+
+&lt;p&gt;Oh and BTW, the MSc(Engg.) and M.E programs have been renamed M.Tech (Research) and M.Tech respectively effective academic year 2016-17.&lt;/p&gt;
+
+&lt;p&gt;Cheers! &lt;br /&gt;
+Arpith K&lt;/p&gt;
+
+&lt;p&gt;PS:
+I am currently perusing my MSc (Engg) at Indian Institute of Science in the department of computer Science and Automation (CSA).&lt;/p&gt;
+
+&lt;p&gt;A good friend of mine wrote a blog on their interview experience. Feel free to read it &lt;a href=&quot;http://adarshpatil.in/timewarp/blog/post-gate-admissions-2015.html&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 01 Oct 2015 13:42:32 +0530</pubDate>
+        <link>http://arpith.xyz/2015/10/computer-science-research-interviews-iitm-and-iisc-cs</link>
+        <guid isPermaLink="true">http://arpith.xyz/2015/10/computer-science-research-interviews-iitm-and-iisc-cs</guid>
+        
+        <category>lifelogging</category>
+        
+        <category>iisc</category>
+        
+        <category>interview</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>Life Explained in 27 Seconds</title>
+        <description>&lt;p&gt;&lt;img src=&quot;http://arpith.xyz/assets/iisc1.jpg&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+&lt;iframe width=&quot;100%&quot; height=&quot;480&quot; src=&quot;https://www.youtube.com/embed/CduA0TULnow&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h2&gt;
+
+&lt;div class=&quot;embed twitter&quot;&gt;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;sv&quot; dir=&quot;ltr&quot;&gt;jekyll-twitter-plugin (1.0.0): A Liquid tag plugin for Jekyll that renders Tweets from Twitter API &lt;a href=&quot;http://t.co/m4EIQPM9h4&quot;&gt;http://t.co/m4EIQPM9h4&lt;/a&gt;&lt;/p&gt;&amp;mdash; RubyGems (@rubygems) &lt;a href=&quot;https://twitter.com/rubygems/status/518821243320287232&quot;&gt;October 5, 2014&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;&lt;/div&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#table-of-contents&quot; id=&quot;markdown-toc-table-of-contents&quot;&gt;Table of Contents&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#this-is-a-header&quot; id=&quot;markdown-toc-this-is-a-header&quot;&gt;This is a header.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#intro&quot; id=&quot;markdown-toc-intro&quot;&gt;intro&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#test&quot; id=&quot;markdown-toc-test&quot;&gt;test&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Quote here.&lt;/p&gt;
+
+  &lt;p&gt;– &lt;cite&gt;Benjamin Franklin&lt;/cite&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;h2 id=&quot;this-is-a-header&quot;&gt;This is a header.&lt;/h2&gt;
+
+  &lt;ol&gt;
+    &lt;li&gt;This is the first list item.&lt;/li&gt;
+    &lt;li&gt;This is the second list item.&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;p&gt;Here’s some example code:&lt;/p&gt;
+
+  &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;return shell_exec(&quot;echo $input | $markdown_script&quot;);
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/div&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/p&gt;
+
+  &lt;p&gt;Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;intro&quot;&gt;intro&lt;/h2&gt;
+
+&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;h3 id=&quot;test&quot;&gt;test&lt;/h3&gt;
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 09 Apr 2015 00:00:00 +0530</pubDate>
+        <link>http://arpith.xyz/2015/04/life-in-27-seconds</link>
+        <guid isPermaLink="true">http://arpith.xyz/2015/04/life-in-27-seconds</guid>
+        
+        
+        <category>test</category>
+        
+      </item>
+    
+  </channel>
+</rss>
