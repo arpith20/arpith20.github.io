@@ -6,9 +6,164 @@
 </description>
     <link>http://arpith.xyz/</link>
     <atom:link href="http://arpith.xyz/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 06 May 2016 20:01:02 +0530</pubDate>
-    <lastBuildDate>Fri, 06 May 2016 20:01:02 +0530</lastBuildDate>
+    <pubDate>Sat, 07 May 2016 17:42:15 +0530</pubDate>
+    <lastBuildDate>Sat, 07 May 2016 17:42:15 +0530</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Introduction to insertOnEdge in Soot</title>
+        <description>&lt;h2 id=&quot;table-of-contents&quot;&gt;Table Of Contents&lt;/h2&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#table-of-contents&quot; id=&quot;markdown-toc-table-of-contents&quot;&gt;Table Of Contents&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#summary&quot; id=&quot;markdown-toc-summary&quot;&gt;Summary&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#specified-by&quot; id=&quot;markdown-toc-specified-by&quot;&gt;Specified by&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#parameters&quot; id=&quot;markdown-toc-parameters&quot;&gt;Parameters&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#usage&quot; id=&quot;markdown-toc-usage&quot;&gt;Usage&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#code&quot; id=&quot;markdown-toc-code&quot;&gt;Code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#future-work&quot; id=&quot;markdown-toc-future-work&quot;&gt;Future Work&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;insertOnEdge&lt;/code&gt; adds instrumentation(s) to the Chain in a manner such that the resulting &lt;a href=&quot;https://en.wikipedia.org/wiki/Control_flow_graph&quot;&gt;CFG&lt;/a&gt; of the program will contain &lt;code class=&quot;highlighter-rouge&quot;&gt;toInsert&lt;/code&gt; on an edge that is defined by &lt;code class=&quot;highlighter-rouge&quot;&gt;point_source&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;point_target&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This API available in Soot’s &lt;br /&gt;
+&lt;a href=&quot;https://ssebuild.cased.de/nightly/soot/javadoc/index.html?soot/PatchingChain.html&quot; target=&quot;_blank&quot;&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;
+Class patchingChain &amp;lt;E extends Unit&amp;gt; 
+&lt;/code&gt;
+&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;insertOnEdge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;toInsert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point_src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point_tgt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;insertOnEdge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;toInsert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point_src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point_tgt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;insertOnEdge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Chain&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;toInsert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point_src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;point_tgt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;specified-by&quot;&gt;Specified by&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;insertOnEdge&lt;/code&gt; in interface &lt;code class=&quot;highlighter-rouge&quot;&gt;Chain&amp;lt;E extends Unit&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;parameters&quot;&gt;Parameters&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;toInsert &lt;/code&gt; - the instrumentation to be added in the Chain&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;point_src&lt;/code&gt; - the source point of an edge in CFG&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;point_tgt&lt;/code&gt; - the target point of an edge in CFG&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;insertOnEdge&lt;/code&gt; API correctly adds instructions (&lt;code class=&quot;highlighter-rouge&quot;&gt;toInsert&lt;/code&gt;) to the target program (&lt;code class=&quot;highlighter-rouge&quot;&gt;Body&lt;/code&gt;) on an edge. In a Control Flow Graph, such a directed edge would be represented by a source point (&lt;code class=&quot;highlighter-rouge&quot;&gt;point_src&lt;/code&gt;) and a target unit (&lt;code class=&quot;highlighter-rouge&quot;&gt;point_tgt&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Without this API, instrumenting certain edges can prove difficult and time consuming to the user.&lt;/p&gt;
+
+&lt;p&gt;Consider the following if condition:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//unit1&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;		&lt;span class=&quot;c1&quot;&gt;//unit2&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;//unit3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;The control flow graph for the above code is as follows: &lt;br /&gt;
+&lt;a href=&quot;/assets/soot/cfg.jpg&quot;&gt;&lt;img src=&quot;/assets/soot/cfg.jpg&quot; alt=&quot;CFG&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Assume that the user wishes to instrument all three edges with a statement &lt;code class=&quot;highlighter-rouge&quot;&gt;toInsert&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Edge 1: Can be instrumented using &lt;code class=&quot;highlighter-rouge&quot;&gt;body.getUnits().insertAfter(toInsert, Unit1)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Edge 2: Can be instrumented using &lt;code class=&quot;highlighter-rouge&quot;&gt;body.getUnits().insertBeforeNoRedirect(toInsert, Unit3)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Edge 3: ????&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;None of the APIs previously available enables a user to easily instrument &lt;em&gt;only&lt;/em&gt; the false branch (Edge 3). Neither &lt;code class=&quot;highlighter-rouge&quot;&gt;insertBefore unit3&lt;/code&gt; nor &lt;code class=&quot;highlighter-rouge&quot;&gt;insertAfter unit1&lt;/code&gt; will work. Using &lt;code class=&quot;highlighter-rouge&quot;&gt;insertBefore unit3&lt;/code&gt; will cause the instrumentation to be executed no matter which branch the program takes.&lt;/p&gt;
+
+&lt;p&gt;This is where insertOnEdge comes in. The 3rd edge can be instrumented by simply using &lt;a href=&quot;/assets/soot/easy.jpg&quot; target=&quot;_blank&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;body.getUnits().insertOnEdge(toInsert, Unit1, Unit3);&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In fact, insertOnEdge can be used on all three edges. This further reduces the user’s work.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getUnits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;insertOnEdge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toInsert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Unit1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Unit2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getUnits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;insertOnEdge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toInsert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Unit2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Unit3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getUnits&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;insertOnEdge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;toInsert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Unit1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Unit3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;insertOnEdge(toInsert, null, target)&lt;/code&gt; &lt;br /&gt;
+Doing this is same as performing &lt;code class=&quot;highlighter-rouge&quot;&gt;insertBefore(toInsert, target)&lt;/code&gt;. All jumps to &lt;code class=&quot;highlighter-rouge&quot;&gt;target&lt;/code&gt; is redirected to &lt;code class=&quot;highlighter-rouge&quot;&gt;toInsert&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;insertOnEdge(toInsert, source, null)&lt;/code&gt; &lt;br /&gt;
+Doing this is same as performing &lt;code class=&quot;highlighter-rouge&quot;&gt;insertAfter(toInsert, source)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;insertOnEdge(toInsert, source, target)&lt;/code&gt; &lt;br /&gt;
+This adds an instrumentation in a manner such that the resulting CFG of the program will contain &lt;code class=&quot;highlighter-rouge&quot;&gt;toInsert&lt;/code&gt; on an edge that is defined by &lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;target&lt;/code&gt;. &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;insertOnEdge&lt;/code&gt; will throw RuntimeException if such an edge does not exist in the program’s CFG.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;insertOnEdge(toInsert, null, null)&lt;/code&gt; &lt;br /&gt;
+Just don’t do this. &lt;code class=&quot;highlighter-rouge&quot;&gt;insertOnEdge&lt;/code&gt; will throw a RuntimeException&lt;a href=&quot;/assets/soot/ohshi.jpg&quot; target=&quot;_blank&quot;&gt;.&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
+&lt;p&gt;You could read the following code to go into the nitty-gritties of insertOnEdge. &lt;a href=&quot;https://gist.github.com/arpith20/d4ccb3476e71a2e2bedd1258c6a5c3f6#file-insertonedge-java&quot;&gt;&lt;em&gt;(View code on GitHub)&lt;/em&gt;&lt;/a&gt;:&lt;/p&gt;
+
+&lt;script width=&quot;110%&quot; src=&quot;https://gist.github.com/arpith20/d4ccb3476e71a2e2bedd1258c6a5c3f6.js&quot;&gt;&lt;/script&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;future-work&quot;&gt;Future Work&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;At the time of writing, this work is tested and known to work on Jimple code. Shimple  intermediate representation is not supported.&lt;/li&gt;
+  &lt;li&gt;Exception edges cannot be instrumented using this method.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you have implemented any of these features, you could consider &lt;a href=&quot;https://github.com/Sable/soot/wiki/Contributing-to-Soot&quot; target=&quot;_blank&quot;&gt;contributing to soot&lt;/a&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;br /&gt;
+PS: The insertOnEdge feature was added to the Soot repository with this pull request: &lt;a href=&quot;https://github.com/Sable/soot/pull/583&quot; target=&quot;_blank&quot;&gt;Feature/insert on edge #583&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Have any suggestions or questions that you want answered? Feel free to contact me or use the comment section below.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 07 May 2016 09:42:22 +0530</pubDate>
+        <link>http://arpith.xyz/2016/05/insertonedge-soot/</link>
+        <guid isPermaLink="true">http://arpith.xyz/2016/05/insertonedge-soot/</guid>
+        
+        <category>iisc</category>
+        
+        <category>soot</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
     
       <item>
         <title>The World of Exponentials</title>
