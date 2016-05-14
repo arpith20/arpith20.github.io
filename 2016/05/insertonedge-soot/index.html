@@ -86,10 +86,9 @@
   </header>
 
   <article class="post-content">
-    <h2 id="table-of-contents">Table Of Contents</h2>
+    <h2>Table Of Contents</h2>
 
 <ul id="markdown-toc">
-  <li><a href="#table-of-contents" id="markdown-toc-table-of-contents">Table Of Contents</a></li>
   <li><a href="#summary" id="markdown-toc-summary">Summary</a>    <ul>
       <li><a href="#specified-by" id="markdown-toc-specified-by">Specified by</a></li>
       <li><a href="#parameters" id="markdown-toc-parameters">Parameters</a></li>
@@ -206,7 +205,116 @@ Just don’t do this. <code class="highlighter-rouge">insertOnEdge</code> will t
 <h2 id="code">Code</h2>
 <p>You could read the following code to go into the nitty-gritties of insertOnEdge. <a href="https://gist.github.com/arpith20/d4ccb3476e71a2e2bedd1258c6a5c3f6#file-insertonedge-java"><em>(View code on GitHub)</em></a>:</p>
 
-<script width="110%" src="https://gist.github.com/arpith20/d4ccb3476e71a2e2bedd1258c6a5c3f6.js"></script>
+<noscript><pre>/**
+* Inserts instrumentation in a manner such that the resulting control flow
+* graph (CFG) of the program will contain &lt;code&gt;toInsert&lt;/code&gt; on an edge
+* that is defined by &lt;code&gt;point_source&lt;/code&gt; and &lt;code&gt;point_target&lt;/code&gt;.
+* 
+* @param toInsert  the instrumentation to be added in the Chain
+* @param point_src the source point of an edge in CFG
+* @param point_tgt the target point of an edge
+*/
+public void insertOnEdge(E toInsert, E point_src, E point_tgt) {
+
+	if (toInsert == null)
+		throw new RuntimeException(&quot;Bad idea! You tried to insert &quot; + &quot;a null object into a Chain!&quot;);
+
+	if (map.containsKey(toInsert))
+		throw new RuntimeException(&quot;Chain already contains object.&quot;);
+
+	// Insert &#39;toInsert&#39; before &#39;target&#39; point in chain if the source point is null
+	if (point_src == null &amp;&amp; point_tgt != null) {
+		((Unit) point_tgt).redirectJumpsToThisTo((Unit) toInsert);
+		insertBefore(toInsert, point_tgt);
+		return;
+	}
+
+	// Insert &#39;toInsert&#39; after &#39;source&#39; point in chain if the target point is null
+	if (point_src != null &amp;&amp; point_tgt == null) {
+		insertAfter(toInsert, point_src);
+		return;
+	}
+
+	// Throw an exception if both source and target is null
+	if (point_src == null &amp;&amp; point_tgt == null) {
+		throw new RuntimeException(&quot;insertOnEdge failed! Both source and target points are null&quot;);
+	}
+
+	// If target is right after the source in the Chain
+	// 1- Redirect all jumps (if any) from &#39;source&#39; to &#39;target&#39;, to &#39;toInsert&#39;
+	//    (source-&gt;target) ==&gt;  (source-&gt;toInsert)
+	// 2- Insert &#39;toInsert&#39; after &#39;source&#39; in Chain
+	if (getSuccOf(point_src) == point_tgt) {
+		List&lt;UnitBox&gt; boxes = ((Unit) point_src).getUnitBoxes();
+		for (UnitBox box : boxes) {
+			if (box.getUnit() == point_tgt) {
+				box.setUnit((Unit) toInsert);
+			}
+		}
+		insertAfter(toInsert, point_src);
+		return;
+	}
+
+
+	// If the target is not right after the source in chain then,
+	// 1- Redirect all jumps (if any) from &#39;source&#39; to &#39;target&#39;, to &#39;toInsert&#39;
+	//    (source-&gt;target) ==&gt;  (source-&gt;toInsert)
+	//    1.1- if there are no jumps from source to target, then such an edge does not exist. Throw an exception.
+	// 2- Insert &#39;toInsert&#39; before &#39;target&#39; in Chain
+	// 3- If required, add a &#39;goto target&#39; statement so that no other edge executes &#39;toInsert&#39;  
+	boolean validEdgeFound = false;
+	E originalPred = getPredOf(point_tgt);
+	List&lt;UnitBox&gt; boxes = ((Unit) point_src).getUnitBoxes();
+	for (UnitBox box : boxes) {
+		if (box.getUnit() == point_tgt) {
+			if (point_src instanceof GotoStmt) {
+				box.setUnit((Unit) toInsert);
+				insertAfter(toInsert, point_src);
+
+				E goto_unit = (E) new JGotoStmt((Unit) point_tgt);
+				insertAfter(goto_unit, toInsert);
+				return;
+			}
+
+			box.setUnit((Unit) toInsert);
+
+			validEdgeFound = true;
+		}
+	}
+	if (validEdgeFound) {
+		insertBefore(toInsert, point_tgt);
+
+		if (originalPred != point_src) {
+			if (originalPred instanceof GotoStmt)
+				return;
+
+			E goto_unit = (E) new JGotoStmt((Unit) point_tgt);
+			insertBefore(goto_unit, (E) toInsert);
+		}
+		return;
+	}
+
+
+	// In certain scenarios, the above code can add extra &#39;goto&#39; units on a different edge
+	// So, an edge [src --&gt; tgt] becomes [src -&gt; goto tgt -&gt; tgt].
+	// When this happens, the original edge [src -&gt; tgt] ceases to exist.
+	// The following code handles such scenarios. 
+	if (getSuccOf(point_src) instanceof GotoStmt) {
+
+		if (((Unit) getSuccOf(point_src)).getUnitBoxes().get(0).getUnit() == point_tgt) {
+			((Unit) getSuccOf(point_src)).redirectJumpsToThisTo((Unit) toInsert);
+			insertBefore(toInsert, getSuccOf(point_src));
+			return;
+
+		}
+	}
+
+	// If the control reaches this point, it means that an edge [stc -&gt; tgt] as specified by user does not exist and is thus invalid
+	// Return an exception.
+	throw new RuntimeException(
+		&quot;insertOnEdge failed! No such edge found. The edge on which you want to insert an instrumentation is invalid.&quot;);
+}</pre></noscript>
+<script src="https://gist.github.com/arpith20/d4ccb3476e71a2e2bedd1258c6a5c3f6.js"> </script>
 
 <hr />
 <p><br /></p>
@@ -216,8 +324,6 @@ Just don’t do this. <code class="highlighter-rouge">insertOnEdge</code> will t
   <li>At the time of writing, this work is tested and known to work on Jimple code. Shimple  intermediate representation is not supported.</li>
   <li>Exception edges cannot be instrumented using this method.</li>
 </ul>
-
-<p>If you have implemented any of these features, you could consider <a href="https://github.com/Sable/soot/wiki/Contributing-to-Soot" target="_blank">contributing to soot</a>.</p>
 
 <hr />
 

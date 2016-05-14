@@ -6,16 +6,15 @@
 </description>
     <link>http://arpith.xyz/</link>
     <atom:link href="http://arpith.xyz/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 07 May 2016 17:42:15 +0530</pubDate>
-    <lastBuildDate>Sat, 07 May 2016 17:42:15 +0530</lastBuildDate>
+    <pubDate>Sat, 14 May 2016 23:45:26 +0530</pubDate>
+    <lastBuildDate>Sat, 14 May 2016 23:45:26 +0530</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
         <title>Introduction to insertOnEdge in Soot</title>
-        <description>&lt;h2 id=&quot;table-of-contents&quot;&gt;Table Of Contents&lt;/h2&gt;
+        <description>&lt;h2&gt;Table Of Contents&lt;/h2&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#table-of-contents&quot; id=&quot;markdown-toc-table-of-contents&quot;&gt;Table Of Contents&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#summary&quot; id=&quot;markdown-toc-summary&quot;&gt;Summary&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#specified-by&quot; id=&quot;markdown-toc-specified-by&quot;&gt;Specified by&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#parameters&quot; id=&quot;markdown-toc-parameters&quot;&gt;Parameters&lt;/a&gt;&lt;/li&gt;
@@ -132,7 +131,116 @@ Just don’t do this. &lt;code class=&quot;highlighter-rouge&quot;&gt;insertOnEd
 &lt;h2 id=&quot;code&quot;&gt;Code&lt;/h2&gt;
 &lt;p&gt;You could read the following code to go into the nitty-gritties of insertOnEdge. &lt;a href=&quot;https://gist.github.com/arpith20/d4ccb3476e71a2e2bedd1258c6a5c3f6#file-insertonedge-java&quot;&gt;&lt;em&gt;(View code on GitHub)&lt;/em&gt;&lt;/a&gt;:&lt;/p&gt;
 
-&lt;script width=&quot;110%&quot; src=&quot;https://gist.github.com/arpith20/d4ccb3476e71a2e2bedd1258c6a5c3f6.js&quot;&gt;&lt;/script&gt;
+&lt;noscript&gt;&lt;pre&gt;/**
+* Inserts instrumentation in a manner such that the resulting control flow
+* graph (CFG) of the program will contain &amp;lt;code&amp;gt;toInsert&amp;lt;/code&amp;gt; on an edge
+* that is defined by &amp;lt;code&amp;gt;point_source&amp;lt;/code&amp;gt; and &amp;lt;code&amp;gt;point_target&amp;lt;/code&amp;gt;.
+* 
+* @param toInsert  the instrumentation to be added in the Chain
+* @param point_src the source point of an edge in CFG
+* @param point_tgt the target point of an edge
+*/
+public void insertOnEdge(E toInsert, E point_src, E point_tgt) {
+
+	if (toInsert == null)
+		throw new RuntimeException(&amp;quot;Bad idea! You tried to insert &amp;quot; + &amp;quot;a null object into a Chain!&amp;quot;);
+
+	if (map.containsKey(toInsert))
+		throw new RuntimeException(&amp;quot;Chain already contains object.&amp;quot;);
+
+	// Insert &amp;#39;toInsert&amp;#39; before &amp;#39;target&amp;#39; point in chain if the source point is null
+	if (point_src == null &amp;amp;&amp;amp; point_tgt != null) {
+		((Unit) point_tgt).redirectJumpsToThisTo((Unit) toInsert);
+		insertBefore(toInsert, point_tgt);
+		return;
+	}
+
+	// Insert &amp;#39;toInsert&amp;#39; after &amp;#39;source&amp;#39; point in chain if the target point is null
+	if (point_src != null &amp;amp;&amp;amp; point_tgt == null) {
+		insertAfter(toInsert, point_src);
+		return;
+	}
+
+	// Throw an exception if both source and target is null
+	if (point_src == null &amp;amp;&amp;amp; point_tgt == null) {
+		throw new RuntimeException(&amp;quot;insertOnEdge failed! Both source and target points are null&amp;quot;);
+	}
+
+	// If target is right after the source in the Chain
+	// 1- Redirect all jumps (if any) from &amp;#39;source&amp;#39; to &amp;#39;target&amp;#39;, to &amp;#39;toInsert&amp;#39;
+	//    (source-&amp;gt;target) ==&amp;gt;  (source-&amp;gt;toInsert)
+	// 2- Insert &amp;#39;toInsert&amp;#39; after &amp;#39;source&amp;#39; in Chain
+	if (getSuccOf(point_src) == point_tgt) {
+		List&amp;lt;UnitBox&amp;gt; boxes = ((Unit) point_src).getUnitBoxes();
+		for (UnitBox box : boxes) {
+			if (box.getUnit() == point_tgt) {
+				box.setUnit((Unit) toInsert);
+			}
+		}
+		insertAfter(toInsert, point_src);
+		return;
+	}
+
+
+	// If the target is not right after the source in chain then,
+	// 1- Redirect all jumps (if any) from &amp;#39;source&amp;#39; to &amp;#39;target&amp;#39;, to &amp;#39;toInsert&amp;#39;
+	//    (source-&amp;gt;target) ==&amp;gt;  (source-&amp;gt;toInsert)
+	//    1.1- if there are no jumps from source to target, then such an edge does not exist. Throw an exception.
+	// 2- Insert &amp;#39;toInsert&amp;#39; before &amp;#39;target&amp;#39; in Chain
+	// 3- If required, add a &amp;#39;goto target&amp;#39; statement so that no other edge executes &amp;#39;toInsert&amp;#39;  
+	boolean validEdgeFound = false;
+	E originalPred = getPredOf(point_tgt);
+	List&amp;lt;UnitBox&amp;gt; boxes = ((Unit) point_src).getUnitBoxes();
+	for (UnitBox box : boxes) {
+		if (box.getUnit() == point_tgt) {
+			if (point_src instanceof GotoStmt) {
+				box.setUnit((Unit) toInsert);
+				insertAfter(toInsert, point_src);
+
+				E goto_unit = (E) new JGotoStmt((Unit) point_tgt);
+				insertAfter(goto_unit, toInsert);
+				return;
+			}
+
+			box.setUnit((Unit) toInsert);
+
+			validEdgeFound = true;
+		}
+	}
+	if (validEdgeFound) {
+		insertBefore(toInsert, point_tgt);
+
+		if (originalPred != point_src) {
+			if (originalPred instanceof GotoStmt)
+				return;
+
+			E goto_unit = (E) new JGotoStmt((Unit) point_tgt);
+			insertBefore(goto_unit, (E) toInsert);
+		}
+		return;
+	}
+
+
+	// In certain scenarios, the above code can add extra &amp;#39;goto&amp;#39; units on a different edge
+	// So, an edge [src --&amp;gt; tgt] becomes [src -&amp;gt; goto tgt -&amp;gt; tgt].
+	// When this happens, the original edge [src -&amp;gt; tgt] ceases to exist.
+	// The following code handles such scenarios. 
+	if (getSuccOf(point_src) instanceof GotoStmt) {
+
+		if (((Unit) getSuccOf(point_src)).getUnitBoxes().get(0).getUnit() == point_tgt) {
+			((Unit) getSuccOf(point_src)).redirectJumpsToThisTo((Unit) toInsert);
+			insertBefore(toInsert, getSuccOf(point_src));
+			return;
+
+		}
+	}
+
+	// If the control reaches this point, it means that an edge [stc -&amp;gt; tgt] as specified by user does not exist and is thus invalid
+	// Return an exception.
+	throw new RuntimeException(
+		&amp;quot;insertOnEdge failed! No such edge found. The edge on which you want to insert an instrumentation is invalid.&amp;quot;);
+}&lt;/pre&gt;&lt;/noscript&gt;
+&lt;script src=&quot;https://gist.github.com/arpith20/d4ccb3476e71a2e2bedd1258c6a5c3f6.js&quot;&gt; &lt;/script&gt;
 
 &lt;hr /&gt;
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
@@ -142,8 +250,6 @@ Just don’t do this. &lt;code class=&quot;highlighter-rouge&quot;&gt;insertOnEd
   &lt;li&gt;At the time of writing, this work is tested and known to work on Jimple code. Shimple  intermediate representation is not supported.&lt;/li&gt;
   &lt;li&gt;Exception edges cannot be instrumented using this method.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;If you have implemented any of these features, you could consider &lt;a href=&quot;https://github.com/Sable/soot/wiki/Contributing-to-Soot&quot; target=&quot;_blank&quot;&gt;contributing to soot&lt;/a&gt;.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -220,6 +326,182 @@ To learn the mathematical power  of exponents and exponential curves, school chi
       </item>
     
       <item>
+        <title>Getting Started with PintOS</title>
+        <description>&lt;p&gt;This guide walks you through a series of steps to get you started working on &lt;a href=&quot;https://web.stanford.edu/class/cs140/projects/pintos/pintos_1.html&quot; target=&quot;_blank&quot;&gt;PintOS&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Pintos is a simple operating system framework that supports very basic features. The objective is to strengthen the functionality of this OS. This involves working on various aspects of an operating system including:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://web.stanford.edu/class/cs140/projects/pintos/pintos_2.html#SEC15&quot; target=&quot;_blank&quot;&gt;Threads&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://web.stanford.edu/class/cs140/projects/pintos/pintos_3.html#SEC32&quot; target=&quot;_blank&quot;&gt;User Programs&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://web.stanford.edu/class/cs140/projects/pintos/pintos_4.html#SEC53&quot; target=&quot;_blank&quot;&gt;Virtual Memory&lt;/a&gt; and&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://web.stanford.edu/class/cs140/projects/pintos/pintos_5.html#SEC75&quot; target=&quot;_blank&quot;&gt;File Systems&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt; Table Of Contents&lt;/h2&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#installing-pintos&quot; id=&quot;markdown-toc-installing-pintos&quot;&gt;Installing PintOS&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#prerequisites&quot; id=&quot;markdown-toc-prerequisites&quot;&gt;Prerequisites&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#obtaining-the-source-code&quot; id=&quot;markdown-toc-obtaining-the-source-code&quot;&gt;Obtaining the Source Code&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#setting-the-path-variables&quot; id=&quot;markdown-toc-setting-the-path-variables&quot;&gt;Setting the PATH Variables&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#compiling-the-source&quot; id=&quot;markdown-toc-compiling-the-source&quot;&gt;Compiling the Source&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#testing&quot; id=&quot;markdown-toc-testing&quot;&gt;Testing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#using-eclipse&quot; id=&quot;markdown-toc-using-eclipse&quot;&gt;Using Eclipse&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;installing-pintos&quot;&gt;Installing PintOS&lt;/h2&gt;
+
+&lt;h3 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h3&gt;
+&lt;p&gt;Before starting, you’ll need to install the following dependencies&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Linux OS (At the time of writing, I was using Ubuntu 15.10)&lt;/li&gt;
+  &lt;li&gt;qemu (Emulator)&lt;/li&gt;
+  &lt;li&gt;GNU make&lt;/li&gt;
+  &lt;li&gt;GNU binutils&lt;/li&gt;
+  &lt;li&gt;perl&lt;/li&gt;
+  &lt;li&gt;gdb&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get install qemu make binutils perl gdb&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;obtaining-the-source-code&quot;&gt;Obtaining the Source Code&lt;/h3&gt;
+
+&lt;p&gt;Head over to the Stanford’s &lt;a href=&quot;https://web.stanford.edu/class/cs140/projects/pintos/pintos_1.html&quot; target=&quot;_blank&quot;&gt;site&lt;/a&gt; or click the link below to download the tar.gz file containing the PintOS source: &lt;br /&gt;
+&lt;a href=&quot;http://www.stanford.edu/class/cs140/projects/pintos/pintos.tar.gz&quot;&gt;http://www.stanford.edu/class/cs140/projects/pintos/pintos.tar.gz&lt;/a&gt; (&lt;a href=&quot;/assets/pintos/pintos.tar.gz&quot;&gt;mirror&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Extract the contents to the directory of your choice. For the purpose of this post, I will assume that the contents were extracted to the &lt;code class=&quot;highlighter-rouge&quot;&gt;$HOME&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;h3 id=&quot;setting-the-path-variables&quot;&gt;Setting the PATH Variables&lt;/h3&gt;
+
+&lt;p&gt;The project requires you to run scripts present in &lt;code class=&quot;highlighter-rouge&quot;&gt;/src/utils&lt;/code&gt; folder. Working on this project would be easier if you have this directory your in &lt;code class=&quot;highlighter-rouge&quot;&gt;$PATH&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The easiest way to add &lt;code class=&quot;highlighter-rouge&quot;&gt;/src/utils&lt;/code&gt; is as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Open terminal&lt;/li&gt;
+  &lt;li&gt;Add the line PATH=”$PATH:$HOME/pintos/src/utils” to .profile or .bashrc&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ echo PATH=&quot;$PATH:$HOME/pintos/src/utils&quot; &amp;gt;&amp;gt; ~/.bashrc&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Reload your shell&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ source ~/.bashrc&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;To verify that the environment has been set correctly, run the following command &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ pintos&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;/assets/pintos/pintos1.png&quot;&gt;&lt;img src=&quot;/assets/pintos/pintos1.png&quot; alt=&quot;PintOS available options&quot; /&gt;&lt;/a&gt;
+&lt;br /&gt;&lt;br /&gt;If you get the above output, congratulations! You just took your first baby step! :)&lt;/p&gt;
+
+&lt;h2 id=&quot;compiling-the-source&quot;&gt;Compiling the Source&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Head over to src/threads directory &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ cd pintos/src/threads&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Set the simulator to &lt;code class=&quot;highlighter-rouge&quot;&gt;qemu&lt;/code&gt; in Make.vars file &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;SIMULATOR = --qemu&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Compile the source with the make command &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ make&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Run a program called ‘alarm-single’ in PintOS with QEMU &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ pintos --qemu -- -q run alarm-single&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 class=&quot;error&quot;&gt;Troubleshooting&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;At this point you might get an error which says:   &lt;br /&gt;
+Can’t exec “qemu”: No such file or directory at /home/arpith/pintos/src/utils/pintos line 923.&lt;br /&gt;
+&lt;br /&gt;
+In this case, open the &lt;code&gt;pintos&lt;/code&gt; perl script in &lt;code&gt;src/utils/&lt;/code&gt; and replace line 623 (&lt;code&gt;my (@cmd) = (&#39;qemu&#39;);&lt;/code&gt;) with &lt;code&gt;my (@cmd) = (&#39;qemu-system-i386&#39;);&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Ideally, the QEMU should exit once PintOS powers off.&lt;br /&gt;
+I it does not and gets stuck at &lt;code class=&quot;highlighter-rouge&quot;&gt;Powering off...&lt;/code&gt;, then it means that there is something wrong with ACPI poweroff routine.&lt;br /&gt;
+To rectify the issue, open the file &lt;code&gt;src/devices/shutdown.c&lt;/code&gt;&lt;br /&gt;
+Now, Insert the line &lt;code&gt;outw( 0x604, 0x0 | 0x2000 );&lt;/code&gt;  after &lt;code&gt;printf (&quot;Powering off...\n&quot;); serial_flush ();&lt;/code&gt; as shown below:&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Powering off...&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;serial_flush&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;//add the following line
+&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;outw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x604&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;0x2000&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+  &lt;span class=&quot;cm&quot;&gt;/* This is a special power-off sequence supported by Bochs and
+     QEMU, but not by physical hardware. */&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;&#39;\0&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;outb&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0x8900&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;After you make the above changes, recompile with the &lt;code class=&quot;highlighter-rouge&quot;&gt;make&lt;/code&gt; command and rerun alarm-single program in PintOS.&lt;br /&gt;&lt;br /&gt;
+&lt;a href=&quot;/assets/pintos/pintos2.png&quot;&gt;&lt;img src=&quot;/assets/pintos/pintos2.png&quot; alt=&quot;PintOS available options&quot; /&gt;&lt;/a&gt;
+&lt;br /&gt;&lt;br /&gt;Congratulations! You should now have a program running in PintOS!&lt;/p&gt;
+
+&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
+&lt;p&gt;The source comes with predefined test cases which you would use through the course of this project to verify your implementation.&lt;/p&gt;
+
+&lt;p&gt;After building the project, you’ll see that a new directory called &lt;code class=&quot;highlighter-rouge&quot;&gt;build&lt;/code&gt; is created. Go to that directory and execute &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ make check&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Assuming that this is the first time you’re running PintOS and have not modified the original source code, most of the test cases would fail. For the first project, you’d have to implement alarm clock, priority scheduling and advanced scheduler. Once you have correctly implemented this, all test cases should pass.&lt;/p&gt;
+
+&lt;p&gt;Good Luck!&lt;/p&gt;
+
+&lt;h2 id=&quot;using-eclipse&quot;&gt;Using Eclipse&lt;/h2&gt;
+
+&lt;p&gt;While one could use Vim to edit your code and use ctags + cscope to navigate between them, I find working with Eclipse much easier.&lt;/p&gt;
+
+&lt;p&gt;To import the source code,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.eclipse.org/downloads/&quot; target=&quot;_blank&quot;&gt;Download Eclipse&lt;/a&gt; for C/C++&lt;/li&gt;
+  &lt;li&gt;goto &lt;code class=&quot;highlighter-rouge&quot;&gt;file -&amp;gt; import -&amp;gt; C/C++&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Select Existing Code as MakeFile Project&lt;/li&gt;
+  &lt;li&gt;Click next&lt;/li&gt;
+  &lt;li&gt;Name your project &lt;code class=&quot;highlighter-rouge&quot;&gt;batman&lt;/code&gt; :P&lt;/li&gt;
+  &lt;li&gt;Set the src folder of PintOS as the Existing Code Location&lt;/li&gt;
+  &lt;li&gt;Use Linux GCC as the toolchain from indexer settings&lt;/li&gt;
+  &lt;li&gt;Done!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You should now be able to see all directories in the Project Explorer.&lt;/p&gt;
+
+&lt;p&gt;Some of the most commonly used shortcuts are&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;F3 - To view the deceleration of the selected function&lt;/li&gt;
+  &lt;li&gt;Ctrl + Shift + G - To find references to selected function. I used this to locate the function calls to a particular function&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I used eclipse only as an editor. To build the project, the terminal was my friend.&lt;/p&gt;
+
+&lt;p&gt;Note: There are hundreds of ways to set up your working environment. One could use Vim while other prefers Gedit (o.O). What I did is just one of the many ways. Feel free to explore and learn.&lt;/p&gt;
+
+&lt;h2&gt; Epilogue &lt;/h2&gt;
+
+&lt;p&gt;Be sure to read the documentation provided by Stanford carefully.&lt;/p&gt;
+
+&lt;p&gt;Understand what you need to do and observe what the original source code already does. Spend some time designing the solution on a piece of paper before actually implementing it. This could potentially save a lot of time at a later stage.&lt;/p&gt;
+
+&lt;p&gt;All the best! See you on the other side :P&lt;/p&gt;
+</description>
+        <pubDate>Wed, 20 Jan 2016 00:00:00 +0530</pubDate>
+        <link>http://arpith.xyz/2016/01/getting-started-with-pintos/</link>
+        <guid isPermaLink="true">http://arpith.xyz/2016/01/getting-started-with-pintos/</guid>
+        
+        <category>iisc</category>
+        
+        <category>os</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
         <title>Research Interviews at IITM and IISc</title>
         <description>&lt;h2 id=&quot;table-of-contents&quot;&gt;Table Of Contents&lt;/h2&gt;
 
@@ -265,7 +547,7 @@ To learn the mathematical power  of exponents and exponential curves, school chi
 
 &lt;p&gt;The second alternative is to opt into the college hostel. If you are one of the pampered kind and comfort is your first priority, then this place will be complete nightmare. My friends who had stayed there were provided a room with a bed but without a mattress. Even though I did not stay here, from those who did, the reviews were mostly negative. They were charged Rs350 per night. You are however guaranteed a roof over your head in a safe environment in the proximity of place where you will be interviewed. For most students this should be sufficient.&lt;/p&gt;
 
-&lt;p&gt;The last option is to book a room in a hotel near IIT Madras. This will probably be the costliest of the three options but can potentially be the most comfortable in terms of stay. But note that IIT Madras is a very large campus and being close to IIT need not necessarily mean you are close to your department. You’ll have to make your own arrangements to reach the respective departments and transportation like auto rickshaws or yellow cabs in Chennai is not cheap. Also interacting with people outside of IIT can be an issue for someone who don’t speak Tamil. Hardly anyone understand (or choose to understand) Hindi and they barely speak English. I would personally not choose this option and since I prefer the safety if IIT over fumbling around in an unknown city, but to each their own.&lt;/p&gt;
+&lt;p&gt;The last option is to book a room in a hotel near IIT Madras. This will probably be the costliest of the three options but can potentially be the most comfortable in terms of stay. But note that IIT Madras is a very large campus and being close to IIT need not necessarily mean you are close to your department. You’ll have to make your own arrangements to reach the respective departments and transportation like auto rickshaws or yellow cabs in Chennai is not cheap. Also interacting with people outside IIT can be an issue for someone who doesn’t speak Tamil. Hardly anyone understand (or choose to understand) Hindi and they barely speak English. I would personally not choose this option and since I prefer the safety if IIT over fumbling around in an unknown city, but to each their own.&lt;/p&gt;
 
 &lt;h2 id=&quot;interview-experience-for-msc-engineering-in-computer-science-and-automation-in-iisc&quot;&gt;Interview Experience for MSc Engineering in Computer Science and Automation in IISc&lt;/h2&gt;
 

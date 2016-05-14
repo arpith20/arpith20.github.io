@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>Getting Started with PintOS -- Arpith K </title>
+  <meta name="description" content="This guide walks you through a series of steps to get you started working on PintOS projects">
+  <meta name="author" content="Arpith K">
+
+  <link rel="stylesheet" href="http://arpith.xyz/css/main.css" | prepend: site.baseurl }}">
+  <link rel="canonical" href="http://arpith.xyz/2016/01/getting-started-with-pintos/">
+  <link rel="alternate" type="application/atom+xml" title="Arpith K" href="http://arpith.xyz/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+  <script src="http://arpith.xyz/scripts/jquery-1.11.2.min.js"></script>
+  <script src="http://arpith.xyz/scripts/pithy.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+  	
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+			
+				<li>
+					<a href="http://arpith.xyz">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="http://arpith.xyz/blog/">blog</a>
+				</li>			
+			
+			
+				<li>
+					<a href="http://arpith.xyz/archive/">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="http://arpith.xyz/tags/">tags</a>
+				</li>			
+			
+		</div>
+		<div class="description"> A scrapbook full of random scripts </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/arpith20" title="Github" target="_blank">
+					<i class="fa fa fa-github fa-2x"></i>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/_arpith" title="Twitter" target="_blank">
+					<i class="fa fa-twitter fa-2x"></i>
+				</a>
+			</li>
+			<li>
+				<a href="https://www.goodreads.com/arpith" title="Goodreads" target="_blank">
+					<i class="fa fa-book fa-2x"></i>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<i class="fa fa-rss fa-2x"></i>
+				</a>
+			</li>
+			
+			
+		</ul>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">Getting Started with PintOS</h1>
+    <p class="post-meta">Jan 20, 2016 • Arpith K</p>
+  </header>
+
+  <article class="post-content">
+    <p>This guide walks you through a series of steps to get you started working on <a href="https://web.stanford.edu/class/cs140/projects/pintos/pintos_1.html" target="_blank">PintOS</a>.</p>
+
+<p>Pintos is a simple operating system framework that supports very basic features. The objective is to strengthen the functionality of this OS. This involves working on various aspects of an operating system including:</p>
+
+<ul>
+  <li><a href="https://web.stanford.edu/class/cs140/projects/pintos/pintos_2.html#SEC15" target="_blank">Threads</a></li>
+  <li><a href="https://web.stanford.edu/class/cs140/projects/pintos/pintos_3.html#SEC32" target="_blank">User Programs</a></li>
+  <li><a href="https://web.stanford.edu/class/cs140/projects/pintos/pintos_4.html#SEC53" target="_blank">Virtual Memory</a> and</li>
+  <li><a href="https://web.stanford.edu/class/cs140/projects/pintos/pintos_5.html#SEC75" target="_blank">File Systems</a></li>
+</ul>
+
+<h2> Table Of Contents</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#installing-pintos" id="markdown-toc-installing-pintos">Installing PintOS</a>    <ul>
+      <li><a href="#prerequisites" id="markdown-toc-prerequisites">Prerequisites</a></li>
+      <li><a href="#obtaining-the-source-code" id="markdown-toc-obtaining-the-source-code">Obtaining the Source Code</a></li>
+      <li><a href="#setting-the-path-variables" id="markdown-toc-setting-the-path-variables">Setting the PATH Variables</a></li>
+    </ul>
+  </li>
+  <li><a href="#compiling-the-source" id="markdown-toc-compiling-the-source">Compiling the Source</a></li>
+  <li><a href="#testing" id="markdown-toc-testing">Testing</a></li>
+  <li><a href="#using-eclipse" id="markdown-toc-using-eclipse">Using Eclipse</a></li>
+</ul>
+
+<h2 id="installing-pintos">Installing PintOS</h2>
+
+<h3 id="prerequisites">Prerequisites</h3>
+<p>Before starting, you’ll need to install the following dependencies</p>
+
+<ul>
+  <li>Linux OS (At the time of writing, I was using Ubuntu 15.10)</li>
+  <li>qemu (Emulator)</li>
+  <li>GNU make</li>
+  <li>GNU binutils</li>
+  <li>perl</li>
+  <li>gdb</li>
+</ul>
+
+<p><code class="highlighter-rouge">sudo apt-get install qemu make binutils perl gdb</code></p>
+
+<h3 id="obtaining-the-source-code">Obtaining the Source Code</h3>
+
+<p>Head over to the Stanford’s <a href="https://web.stanford.edu/class/cs140/projects/pintos/pintos_1.html" target="_blank">site</a> or click the link below to download the tar.gz file containing the PintOS source: <br />
+<a href="http://www.stanford.edu/class/cs140/projects/pintos/pintos.tar.gz">http://www.stanford.edu/class/cs140/projects/pintos/pintos.tar.gz</a> (<a href="/assets/pintos/pintos.tar.gz">mirror</a>)</p>
+
+<p>Extract the contents to the directory of your choice. For the purpose of this post, I will assume that the contents were extracted to the <code class="highlighter-rouge">$HOME</code> directory.</p>
+
+<h3 id="setting-the-path-variables">Setting the PATH Variables</h3>
+
+<p>The project requires you to run scripts present in <code class="highlighter-rouge">/src/utils</code> folder. Working on this project would be easier if you have this directory your in <code class="highlighter-rouge">$PATH</code>.</p>
+
+<p>The easiest way to add <code class="highlighter-rouge">/src/utils</code> is as follows:</p>
+
+<ul>
+  <li>Open terminal</li>
+  <li>Add the line PATH=”$PATH:$HOME/pintos/src/utils” to .profile or .bashrc<br />
+<code class="highlighter-rouge">$ echo PATH="$PATH:$HOME/pintos/src/utils" &gt;&gt; ~/.bashrc</code></li>
+  <li>Reload your shell<br />
+<code class="highlighter-rouge">$ source ~/.bashrc</code></li>
+  <li>To verify that the environment has been set correctly, run the following command <br />
+<code class="highlighter-rouge">$ pintos</code></li>
+</ul>
+
+<p><a href="/assets/pintos/pintos1.png"><img src="/assets/pintos/pintos1.png" alt="PintOS available options" /></a>
+<br /><br />If you get the above output, congratulations! You just took your first baby step! :)</p>
+
+<h2 id="compiling-the-source">Compiling the Source</h2>
+
+<ul>
+  <li>Head over to src/threads directory <br />
+<code class="highlighter-rouge">$ cd pintos/src/threads</code></li>
+  <li>Set the simulator to <code class="highlighter-rouge">qemu</code> in Make.vars file <br />
+<code class="highlighter-rouge">SIMULATOR = --qemu</code></li>
+  <li>Compile the source with the make command <br />
+<code class="highlighter-rouge">$ make</code></li>
+  <li>Run a program called ‘alarm-single’ in PintOS with QEMU <br />
+<code class="highlighter-rouge">$ pintos --qemu -- -q run alarm-single</code></li>
+</ul>
+
+<h3 class="error">Troubleshooting</h3>
+
+<ul>
+  <li>
+    <p>At this point you might get an error which says:   <br />
+Can’t exec “qemu”: No such file or directory at /home/arpith/pintos/src/utils/pintos line 923.<br />
+<br />
+In this case, open the <code>pintos</code> perl script in <code>src/utils/</code> and replace line 623 (<code>my (@cmd) = ('qemu');</code>) with <code>my (@cmd) = ('qemu-system-i386');</code></p>
+  </li>
+  <li>
+    <p>Ideally, the QEMU should exit once PintOS powers off.<br />
+I it does not and gets stuck at <code class="highlighter-rouge">Powering off...</code>, then it means that there is something wrong with ACPI poweroff routine.<br />
+To rectify the issue, open the file <code>src/devices/shutdown.c</code><br />
+Now, Insert the line <code>outw( 0x604, 0x0 | 0x2000 );</code>  after <code>printf ("Powering off...\n"); serial_flush ();</code> as shown below:</p>
+  </li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  <span class="n">printf</span> <span class="p">(</span><span class="s">"Powering off...</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+  <span class="n">serial_flush</span> <span class="p">();</span>
+
+  <span class="c1">//add the following line
+</span>  <span class="o">++</span> <span class="n">outw</span><span class="p">(</span> <span class="mh">0x604</span><span class="p">,</span> <span class="mh">0x0</span> <span class="o">|</span> <span class="mh">0x2000</span> <span class="p">);</span>
+
+  <span class="cm">/* This is a special power-off sequence supported by Bochs and
+     QEMU, but not by physical hardware. */</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">p</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span> <span class="o">*</span><span class="n">p</span> <span class="o">!=</span> <span class="sc">'\0'</span><span class="p">;</span> <span class="n">p</span><span class="o">++</span><span class="p">)</span>
+    <span class="n">outb</span> <span class="p">(</span><span class="mh">0x8900</span><span class="p">,</span> <span class="o">*</span><span class="n">p</span><span class="p">);</span>
+</code></pre>
+</div>
+<p>After you make the above changes, recompile with the <code class="highlighter-rouge">make</code> command and rerun alarm-single program in PintOS.<br /><br />
+<a href="/assets/pintos/pintos2.png"><img src="/assets/pintos/pintos2.png" alt="PintOS available options" /></a>
+<br /><br />Congratulations! You should now have a program running in PintOS!</p>
+
+<h2 id="testing">Testing</h2>
+<p>The source comes with predefined test cases which you would use through the course of this project to verify your implementation.</p>
+
+<p>After building the project, you’ll see that a new directory called <code class="highlighter-rouge">build</code> is created. Go to that directory and execute <br />
+<code class="highlighter-rouge">$ make check</code></p>
+
+<p>Assuming that this is the first time you’re running PintOS and have not modified the original source code, most of the test cases would fail. For the first project, you’d have to implement alarm clock, priority scheduling and advanced scheduler. Once you have correctly implemented this, all test cases should pass.</p>
+
+<p>Good Luck!</p>
+
+<h2 id="using-eclipse">Using Eclipse</h2>
+
+<p>While one could use Vim to edit your code and use ctags + cscope to navigate between them, I find working with Eclipse much easier.</p>
+
+<p>To import the source code,</p>
+
+<ul>
+  <li><a href="http://www.eclipse.org/downloads/" target="_blank">Download Eclipse</a> for C/C++</li>
+  <li>goto <code class="highlighter-rouge">file -&gt; import -&gt; C/C++</code></li>
+  <li>Select Existing Code as MakeFile Project</li>
+  <li>Click next</li>
+  <li>Name your project <code class="highlighter-rouge">batman</code> :P</li>
+  <li>Set the src folder of PintOS as the Existing Code Location</li>
+  <li>Use Linux GCC as the toolchain from indexer settings</li>
+  <li>Done!</li>
+</ul>
+
+<p>You should now be able to see all directories in the Project Explorer.</p>
+
+<p>Some of the most commonly used shortcuts are</p>
+
+<ul>
+  <li>F3 - To view the deceleration of the selected function</li>
+  <li>Ctrl + Shift + G - To find references to selected function. I used this to locate the function calls to a particular function</li>
+</ul>
+
+<p>I used eclipse only as an editor. To build the project, the terminal was my friend.</p>
+
+<p>Note: There are hundreds of ways to set up your working environment. One could use Vim while other prefers Gedit (o.O). What I did is just one of the many ways. Feel free to explore and learn.</p>
+
+<h2> Epilogue </h2>
+
+<p>Be sure to read the documentation provided by Stanford carefully.</p>
+
+<p>Understand what you need to do and observe what the original source code already does. Spend some time designing the solution on a piece of paper before actually implementing it. This could potentially save a lot of time at a later stage.</p>
+
+<p>All the best! See you on the other side :P</p>
+
+  </article>
+
+
+	<hr/>
+	<br/>
+	<h2> Comments </h2>
+	<div id="disqus_thread"></div>
+	<script>
+	/**
+	* RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	* LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+	*/
+	/*
+	var disqus_config = function () {
+	this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+	this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	(function() { // DON'T EDIT BELOW THIS LINE
+	var d = document, s = d.createElement('script');
+
+	s.src = '//arpith.disqus.com/embed.js';
+
+	s.setAttribute('data-timestamp', +new Date());
+	(d.head || d.body).appendChild(s);
+	})();
+	</script>
+	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2016 Arpith K<br/>
+	Hosted on GitHub<br/>
+	   &nbsp;
+</footer>
+
+    
+  </body>
+
+</html>

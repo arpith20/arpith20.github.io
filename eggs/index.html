@@ -85,7 +85,13 @@
     <br>
     <div class="page-content">
       <div class="wrapper">
-        <marquee direction="right">🐰</marquee>
+        <style type="text/css">
+ img:hover {
+  cursor:pointer;
+ }
+</style>
+
+<!-- <marquee direction="right">🐰</marquee> -->
 
 <div class="well">
 
@@ -104,31 +110,49 @@
     <li><span>Feb 03</span>» <a href="/2016/02/life-in-27-seconds/">Life Explained in 27 Seconds</a></li>
 
 </ul>
-<pre>
-           ___     ___
-          /::_\._./_::\
-       _={::(_>[_]<_)::}=_
-     _~   ^--~/:i:\~--^   ~_
-   .d^       /:/ \:\       ^b.
-  .d^       (;/   \;)       ^b.
-  i|  ,___                   |i
-  ii /  /^\  ,___    q&&&p   ii
-  ii \__), ^^ _, \  *+*+*+*  ii
-  |i    / @ @ \\_/ x=X=X=X=x i|
-  ||   { -.x.- }   pXoXoXoXq ||
- /=============================\
-{ \\\\\\\\\\\\\\i////////////// }
- \ - x - x - x - x - x - x - x /
-  | / \ / \ / \ / \ / \ / \ / |
-  |x - x - x - x - x - x - x -|
-  | \ / \ / \ / \ / \ / \ / \ |
-  |- x - x - x - x - x - x - x|
-  | / \ / \ / \ / \ / \ / \ / |  
-   \ - x - x - x - x - x - x /
-    ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-too much?
-</pre>
+<br/>
+
+<hr/>
+<br/>
+
+<!-- Still picture is being transmitted to you! 
+     Hint: Google search Slow-scan television (SSTV)!! -->
+<center>
+<img onclick="aud_play_pause();" id="portalradio" src="/images/portalradio_off.png" width="150px" height="150px"/>
+</center>
+
+<audio id="sstv_audio"
+<source src="/assets/eggs/sstv_cake.mp3" type='audio/mp3'>
+</audio>
+
+<script>
+
+function changeImage(playing)
+{
+	if(playing) {
+		var img = document.getElementById("portalradio");
+		img.src="/images/portalradio_on.png";
+		return false;
+	} else {
+		var img = document.getElementById("portalradio");
+		img.src="/images/portalradio_off.png";
+		return false;
+	}
+}
+
+function aud_play_pause() {
+  var sstv_audio = document.getElementById("sstv_audio");
+  if (sstv_audio.paused) {
+  	sstv_audio.currentTime = 0;
+    sstv_audio.play();
+    changeImage(true);
+  } else {
+    sstv_audio.pause();
+    changeImage(false);
+  }
+}
+</script>
 
 </div>
 
