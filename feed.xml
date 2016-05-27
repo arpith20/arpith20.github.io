@@ -6,9 +6,95 @@
 </description>
     <link>http://arpith.xyz/</link>
     <atom:link href="http://arpith.xyz/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 14 May 2016 23:45:26 +0530</pubDate>
-    <lastBuildDate>Sat, 14 May 2016 23:45:26 +0530</lastBuildDate>
+    <pubDate>Fri, 27 May 2016 23:46:50 +0530</pubDate>
+    <lastBuildDate>Fri, 27 May 2016 23:46:50 +0530</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Results for GCC 6.1 testsuite on x86_64-pc-linux-gnu</title>
+        <description>&lt;h3 id=&quot;uname--a&quot;&gt;uname -a&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Linux Arpith-XPS 4.6.0-040600-generic #201605151930 SMP Sun May 15 23:32:59 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;lsbrelease--a&quot;&gt;lsb_release -a&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 16.04 LTS
+Release:	16.04
+Codename:	xenial
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;gcc-tests&quot;&gt;gcc tests&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/gcc.sum.txt&quot;&gt;gcc.sum&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/gcc.log.txt.tar.gz&quot;&gt;gcc.log&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;=== gcc Summary ===
+
+# of expected passes		116981
+# of unexpected failures	20
+# of expected failures		312
+# of unsupported tests		1721
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;g-tests&quot;&gt;g++ tests&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/g++.sum.txt&quot;&gt;g++.sum&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/g++.log.txt.tar.gz&quot;&gt;g++.log&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;=== g++ Summary ===
+
+# of expected passes		104730
+# of unexpected failures	24
+# of unexpected successes	2
+# of expected failures		315
+# of unsupported tests		3698
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;gfortran-tests&quot;&gt;gfortran tests&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/gfortran.sum.txt&quot;&gt;gfortran.sum&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/gfortran.log.txt.tar.gz&quot;&gt;gfortran.log&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;=== gfortran Summary ===
+
+# of expected passes		42052
+# of expected failures		62
+# of unsupported tests		63
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;objc-tests&quot;&gt;objc tests&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/objc.sum.txt&quot;&gt;objc.sum&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/objc.log.txt&quot;&gt;objc.log&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;=== objc Summary ===
+
+# of expected passes		2783
+# of expected failures		6
+# of unsupported tests		68
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Fri, 27 May 2016 05:30:00 +0530</pubDate>
+        <link>http://arpith.xyz/2016/05/gcc-testsuite-results-6-1/</link>
+        <guid isPermaLink="true">http://arpith.xyz/2016/05/gcc-testsuite-results-6-1/</guid>
+        
+        <category>iisc</category>
+        
+        <category>gcc</category>
+        
+        
+        <category>misc</category>
+        
+      </item>
     
       <item>
         <title>Introduction to insertOnEdge in Soot</title>
@@ -284,12 +370,12 @@ To learn the mathematical power  of exponents and exponential curves, school chi
 
 &lt;p&gt;&lt;em&gt;–Chapter 3: Moore’s Outlaws; &lt;a href=&quot;http://www.goodreads.com/book/show/22318398-future-crimes&quot; target=&quot;_blank&quot;&gt;Future Crimes&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 </description>
-        <pubDate>Fri, 06 May 2016 00:00:00 +0530</pubDate>
+        <pubDate>Fri, 06 May 2016 05:30:00 +0530</pubDate>
         <link>http://arpith.xyz/2016/05/the-world-of-exponentials/</link>
         <guid isPermaLink="true">http://arpith.xyz/2016/05/the-world-of-exponentials/</guid>
         
         
-        <category>insperation</category>
+        <category>inspiration</category>
         
       </item>
     
@@ -316,12 +402,12 @@ To learn the mathematical power  of exponents and exponential curves, school chi
 &lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 03 Feb 2016 00:00:00 +0530</pubDate>
+        <pubDate>Wed, 03 Feb 2016 05:30:00 +0530</pubDate>
         <link>http://arpith.xyz/2016/02/life-in-27-seconds/</link>
         <guid isPermaLink="true">http://arpith.xyz/2016/02/life-in-27-seconds/</guid>
         
         
-        <category>insperation</category>
+        <category>inspiration</category>
         
       </item>
     
