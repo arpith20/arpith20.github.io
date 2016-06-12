@@ -6,8 +6,8 @@
 </description>
     <link>http://arpith.xyz/</link>
     <atom:link href="http://arpith.xyz/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 27 May 2016 23:46:50 +0530</pubDate>
-    <lastBuildDate>Fri, 27 May 2016 23:46:50 +0530</lastBuildDate>
+    <pubDate>Sun, 12 Jun 2016 10:15:54 +0530</pubDate>
+    <lastBuildDate>Sun, 12 Jun 2016 10:15:54 +0530</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
@@ -27,7 +27,7 @@ Codename:	xenial
 &lt;h3 id=&quot;gcc-tests&quot;&gt;gcc tests&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/gcc.sum.txt&quot;&gt;gcc.sum&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/gcc.log.txt.tar.gz&quot;&gt;gcc.log&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/gcc.log.txt.tar.xz&quot;&gt;gcc.log&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;=== gcc Summary ===
@@ -42,7 +42,7 @@ Codename:	xenial
 &lt;h3 id=&quot;g-tests&quot;&gt;g++ tests&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/g++.sum.txt&quot;&gt;g++.sum&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/g++.log.txt.tar.gz&quot;&gt;g++.log&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/g++.log.txt.tar.xz&quot;&gt;g++.log&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;=== g++ Summary ===
@@ -58,7 +58,7 @@ Codename:	xenial
 &lt;h3 id=&quot;gfortran-tests&quot;&gt;gfortran tests&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/gfortran.sum.txt&quot;&gt;gfortran.sum&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/gfortran.log.txt.tar.gz&quot;&gt;gfortran.log&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/misc/gcc6/gfortran.log.txt.tar.xz&quot;&gt;gfortran.log&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;=== gfortran Summary ===

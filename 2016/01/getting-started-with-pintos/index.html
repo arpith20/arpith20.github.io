@@ -62,9 +62,16 @@
 					<a href="http://arpith.xyz/misc/">misc</a>
 				</li>			
 			
+			
+				<li>
+					<a href="http://arpith.xyz/books/">books</a>
+				</li>			
+			
 		</div>
 		<div class="description"> A scrapbook full of random scripts </div>		
 		<ul class="social-links">
+
+			
 			<li>
 				<a href="https://github.com/arpith20" title="Github" target="_blank">
 					<i class="fa fa fa-github fa-2x"></i>
@@ -76,7 +83,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="https://www.goodreads.com/arpith" title="Goodreads" target="_blank">
+				<a href="/books/" title="Goodreads">
 					<i class="fa fa-book fa-2x"></i>
 				</a>
 			</li>
@@ -86,6 +93,11 @@
 				</a>
 			</li>
 			
+
+			
+
+			
+
 			
 		</ul>		
 	</div>
@@ -297,12 +309,29 @@ Now, Insert the line <code>outw( 0x604, 0x0 | 0x2000 );</code>  after <code>prin
       </div>
     </div>
     
-    <footer class="footer">
-  <div id="gotop">^</div>
-  <br>
-	@2016 Arpith K<br/>
-	Hosted on GitHub<br/>
-	   &nbsp;
+    <style>
+
+	.thumbnail img{
+		display:none;
+	}    
+
+	.thumbnail:hover img {
+
+		display:block;
+		position: absolute;
+		right: 0px;
+		bottom: 0px;
+	}
+</style>
+<footer class="footer">
+	<div id="gotop">^</div>
+	<br>
+	<div class="thumbnail">
+		<a href="/license/">CC</a> 2016 Arpith K<br/>
+		Hosted on GitHub<br/>
+		&nbsp;
+		<img src="/images/CC-BY-SA_icon.svg" />
+	</div>
 </footer>
 
     

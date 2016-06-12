@@ -62,9 +62,16 @@
 					<a href="http://arpith.xyz/misc/">misc</a>
 				</li>			
 			
+			
+				<li>
+					<a href="http://arpith.xyz/books/">books</a>
+				</li>			
+			
 		</div>
 		<div class="description"> A scrapbook full of random scripts </div>		
 		<ul class="social-links">
+
+			
 			<li>
 				<a href="https://github.com/arpith20" title="Github" target="_blank">
 					<i class="fa fa fa-github fa-2x"></i>
@@ -76,7 +83,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="https://www.goodreads.com/arpith" title="Goodreads" target="_blank">
+				<a href="/books/" title="Goodreads">
 					<i class="fa fa-book fa-2x"></i>
 				</a>
 			</li>
@@ -86,6 +93,11 @@
 				</a>
 			</li>
 			
+
+			
+
+			
+
 			
 		</ul>		
 	</div>
@@ -117,7 +129,7 @@ Codename:	xenial
 <h3 id="gcc-tests">gcc tests</h3>
 <ul>
   <li><a href="/assets/misc/gcc6/gcc.sum.txt">gcc.sum</a></li>
-  <li><a href="/assets/misc/gcc6/gcc.log.txt.tar.gz">gcc.log</a></li>
+  <li><a href="/assets/misc/gcc6/gcc.log.txt.tar.xz">gcc.log</a></li>
 </ul>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>=== gcc Summary ===
@@ -132,7 +144,7 @@ Codename:	xenial
 <h3 id="g-tests">g++ tests</h3>
 <ul>
   <li><a href="/assets/misc/gcc6/g++.sum.txt">g++.sum</a></li>
-  <li><a href="/assets/misc/gcc6/g++.log.txt.tar.gz">g++.log</a></li>
+  <li><a href="/assets/misc/gcc6/g++.log.txt.tar.xz">g++.log</a></li>
 </ul>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>=== g++ Summary ===
@@ -148,7 +160,7 @@ Codename:	xenial
 <h3 id="gfortran-tests">gfortran tests</h3>
 <ul>
   <li><a href="/assets/misc/gcc6/gfortran.sum.txt">gfortran.sum</a></li>
-  <li><a href="/assets/misc/gcc6/gfortran.log.txt.tar.gz">gfortran.log</a></li>
+  <li><a href="/assets/misc/gcc6/gfortran.log.txt.tar.xz">gfortran.log</a></li>
 </ul>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>=== gfortran Summary ===
@@ -207,12 +219,29 @@ Codename:	xenial
       </div>
     </div>
     
-    <footer class="footer">
-  <div id="gotop">^</div>
-  <br>
-	@2016 Arpith K<br/>
-	Hosted on GitHub<br/>
-	   &nbsp;
+    <style>
+
+	.thumbnail img{
+		display:none;
+	}    
+
+	.thumbnail:hover img {
+
+		display:block;
+		position: absolute;
+		right: 0px;
+		bottom: 0px;
+	}
+</style>
+<footer class="footer">
+	<div id="gotop">^</div>
+	<br>
+	<div class="thumbnail">
+		<a href="/license/">CC</a> 2016 Arpith K<br/>
+		Hosted on GitHub<br/>
+		&nbsp;
+		<img src="/images/CC-BY-SA_icon.svg" />
+	</div>
 </footer>
 
     
