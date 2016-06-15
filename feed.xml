@@ -6,9 +6,188 @@
 </description>
     <link>http://arpith.xyz/</link>
     <atom:link href="http://arpith.xyz/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 12 Jun 2016 10:15:54 +0530</pubDate>
-    <lastBuildDate>Sun, 12 Jun 2016 10:15:54 +0530</lastBuildDate>
+    <pubDate>Wed, 15 Jun 2016 09:51:40 +0530</pubDate>
+    <lastBuildDate>Wed, 15 Jun 2016 09:51:40 +0530</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
+    
+      <item>
+        <title>Installing LLVM from Source on Ubuntu 16.04</title>
+        <description>&lt;center&gt;
+&lt;img src=&quot;/assets/llvm/LLVM-Logo-Derivative-4.png&quot; /&gt;
+&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h2&gt;Table Of Contents&lt;/h2&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#download-source-code&quot; id=&quot;markdown-toc-download-source-code&quot;&gt;Download Source Code&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#configure-llvm-and-clang&quot; id=&quot;markdown-toc-configure-llvm-and-clang&quot;&gt;Configure LLVM and Clang&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#using-ninja-to-build-llvm-and-clang&quot; id=&quot;markdown-toc-using-ninja-to-build-llvm-and-clang&quot;&gt;Using Ninja to build LLVM and Clang&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#install-llvm&quot; id=&quot;markdown-toc-install-llvm&quot;&gt;Install LLVM&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#updating-source&quot; id=&quot;markdown-toc-updating-source&quot;&gt;Updating Source&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This is a quick guide on building LLVM and Clang from source and installing them on a machine running Ubuntu 16.04 using Ninja build system.&lt;/p&gt;
+
+&lt;h2 id=&quot;download-source-code&quot;&gt;Download Source Code&lt;/h2&gt;
+
+&lt;p&gt;The first step is to download the source from llvm’s repository. To do so,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Checkout LLVM:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$cd&lt;/span&gt; where-you-want-llvm-to-live
+&lt;span class=&quot;nv&quot;&gt;$svn&lt;/span&gt; co http://llvm.org/svn/llvm-project/llvm/trunk llvm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Checkout Clang:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$cd&lt;/span&gt; llvm/tools
+&lt;span class=&quot;nv&quot;&gt;$svn&lt;/span&gt; co http://llvm.org/svn/llvm-project/cfe/trunk clang
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Checkout Compiler-RT (required to build the sanitizers) [Optional]:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$cd&lt;/span&gt; ../projects
+&lt;span class=&quot;nv&quot;&gt;$svn&lt;/span&gt; co http://llvm.org/svn/llvm-project/compiler-rt/trunk compiler-rt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Checkout Libomp (required for OpenMP support) [Optional]:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$svn&lt;/span&gt; co http://llvm.org/svn/llvm-project/openmp/trunk openmp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Checkout libcxx and libcxxabi [Optional]:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$svn&lt;/span&gt; co http://llvm.org/svn/llvm-project/libcxx/trunk libcxx
+&lt;span class=&quot;nv&quot;&gt;$svn&lt;/span&gt; co http://llvm.org/svn/llvm-project/libcxxabi/trunk libcxxabi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Get the Test Suite Source Code [Optional]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$svn&lt;/span&gt; co http://llvm.org/svn/llvm-project/test-suite/trunk &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;-suite
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;configure-llvm-and-clang&quot;&gt;Configure LLVM and Clang&lt;/h2&gt;
+
+&lt;p&gt;It must be noted that the LLVM project no longer supports building with configure &amp;amp; make. 
+We have to use CMake-based build system.&lt;/p&gt;
+
+&lt;p&gt;It is recommended to create a new build directory somewhere outside the source directory. To do this,&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$cd&lt;/span&gt; ../..
+&lt;span class=&quot;nv&quot;&gt;$mkdir&lt;/span&gt; build
+&lt;span class=&quot;nv&quot;&gt;$cd&lt;/span&gt; build
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In the build directory, run the following command:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$cmake&lt;/span&gt; -G &lt;span class=&quot;s2&quot;&gt;&quot;Ninja&quot;&lt;/span&gt; -DCMAKE_INSTALL_PREFIX&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/install/path -DLLVM_TARGETS_TO_BUILD&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;AArch64 /pathto/llvm/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;The general syntax of cmake is &lt;code class=&quot;highlighter-rouge&quot;&gt;cmake -G &amp;lt;generator&amp;gt; [options] &amp;lt;path to llvm sources&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I prefer to use Ninja build system. Some common generators are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Unix Makefiles&lt;/code&gt; — for generating make-compatible parallel makefiles.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Ninja&lt;/code&gt; — for generating Ninja build files. Most llvm developers use Ninja.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Visual Studio&lt;/code&gt; — for generating Visual Studio projects and solutions.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Xcode&lt;/code&gt; — for generating Xcode projects.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Variables are passed to cmake on the command line using the format &lt;code class=&quot;highlighter-rouge&quot;&gt;-D&amp;lt;variable name&amp;gt;=&amp;lt;value&amp;gt;&lt;/code&gt;. 
+The following are the variables that I pass:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;LLVM_TARGETS_TO_BUILD &lt;br /&gt;
+This controls which targets is built and linked into llc.&lt;/p&gt;
+
+    &lt;p&gt;The various values that this semicolon delimited list can include  are &lt;code class=&quot;highlighter-rouge&quot;&gt;AArch64, AMDGPU, ARM, BPF, Hexagon, Mips, MSP430, NVPTX, PowerPC, Sparc, SystemZ, X86, XCore&lt;/code&gt;.&lt;/p&gt;
+
+    &lt;p&gt;Here, in the example, I choose to use &lt;code class=&quot;highlighter-rouge&quot;&gt;AArch64&lt;/code&gt; as my target. The list is set to LLVM_ALL_TARGETS as default. Doing this however, increases the build time considerably.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;CMAKE_INSTALL_PREFIX &lt;br /&gt;
+This specifies the directory where you want the LLVM tools and libraries to be installed (default /usr/local). DO NOT use relative paths for this.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;using-ninja-to-build-llvm-and-clang&quot;&gt;Using Ninja to build LLVM and Clang&lt;/h2&gt;
+&lt;p&gt;Running &lt;code class=&quot;highlighter-rouge&quot;&gt;cmake&lt;/code&gt; would have generated a file called &lt;code class=&quot;highlighter-rouge&quot;&gt;build.ninja&lt;/code&gt;. At this stage, to build LLVM, just invoke &lt;code class=&quot;highlighter-rouge&quot;&gt;ninja&lt;/code&gt;. You might want to download Ninja binaries for your system from &lt;a href=&quot;https://github.com/ninja-build/ninja/releases&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ninja&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Depending upon the configuration, this step might take considerable amount of time and system resource.&lt;/p&gt;
+&lt;center&gt;
+&lt;a href=&quot;/assets/llvm/sysres.png&quot;&gt;&lt;img src=&quot;/assets/llvm/sysres.png&quot; width=&quot;100%&quot; title=&quot;The build process is very CPU intensive!&quot; /&gt;&lt;/a&gt;
+&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;install-llvm&quot;&gt;Install LLVM&lt;/h2&gt;
+&lt;p&gt;To install LLVM,&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ninja&lt;/span&gt; install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This installs LLVM binaries and libraries in the directory specified by the &lt;code class=&quot;highlighter-rouge&quot;&gt;CMAKE_INSTALL_PREFIX&lt;/code&gt; variable.&lt;/p&gt;
+
+&lt;p&gt;If you choose to do so, the final step would be to include the path to llvm binary files in &lt;code class=&quot;highlighter-rouge&quot;&gt;$PATH&lt;/code&gt; environment variable.&lt;/p&gt;
+
+&lt;center&gt;
+&lt;a href=&quot;/assets/llvm/finalres.png&quot;&gt;&lt;img src=&quot;/assets/llvm/finalres.png&quot; /&gt;&lt;/a&gt;
+&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;updating-source&quot;&gt;Updating Source&lt;/h2&gt;
+
+&lt;p&gt;To update all components of LLVM infrastructure,&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$cd&lt;/span&gt;  where-llvm-lives
+&lt;span class=&quot;nv&quot;&gt;$svn&lt;/span&gt; update . ./tools/clang/ ./projects/compiler-rt/ ./projects/openmp/ ./projects/libcxx ./projects/libcxxabi/ ./projects/test-suite/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;After this, build the project again using the aforementioned procedure.&lt;/p&gt;
+
+&lt;center&gt;
+&lt;a href=&quot;https://ninja-build.org/&quot; target=&quot;blank&quot;&gt;&lt;img src=&quot;/assets/llvm/ninja.png&quot; width=&quot;50px&quot; /&gt;&lt;/a&gt;
+&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 14 Jun 2016 05:30:00 +0530</pubDate>
+        <link>http://arpith.xyz/2016/06/installing-llvm-from-source-ubuntu-16-04/</link>
+        <guid isPermaLink="true">http://arpith.xyz/2016/06/installing-llvm-from-source-ubuntu-16-04/</guid>
+        
+        <category>iisc</category>
+        
+        <category>llvm</category>
+        
+        
+        <category>misc</category>
+        
+      </item>
     
       <item>
         <title>Results for GCC 6.1 testsuite on x86_64-pc-linux-gnu</title>
