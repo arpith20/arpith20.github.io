@@ -11,7 +11,7 @@
   <meta name="author" content="Arpith K">
 
   <link rel="stylesheet" href="http://arpith.xyz/css/main.css" | prepend: site.baseurl }}">
-  <link rel="canonical" href="http://arpith.xyz/2015/04/">
+  <link rel="canonical" href="http://arpith.xyz/NyanNyanNyanNyanNyanNyanNyanNyanNyanNyanNyanNyanNyanNyanNyanNyanNyanNyanNyanNyan/">
   <link rel="alternate" type="application/atom+xml" title="Arpith K" href="http://arpith.xyz/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
   <script src="http://arpith.xyz/scripts/jquery-1.11.2.min.js"></script>
   <script src="http://arpith.xyz/scripts/pithy.js"></script>
@@ -112,18 +112,45 @@
     <br>
     <div class="page-content">
       <div class="wrapper">
-        <div class="well">
-<h2 class="category">Archive of posts from April 2015</h2>
+        </style>
+<style>
+body{background:#003366;}
+</style>
 
-<ul class="posts">
+<center>
+<img onclick="aud_play_pause();" src="/assets/eggs/nyan.gif" width="100%" height="480px"/>
+</center>
 
-  <li>
-    <span class="post-date">Apr 9, 2015</span>
-    <a class="post-link" href="/2015/04/life-in-27-seconds/">Life Explained in 27 Seconds</a>
-  </li>
+<audio id="sstv_audio"
+<source src="/assets/eggs/nyan.mp3" type='audio/mp3'>
+</audio>
 
-</ul>
-</div>
+<script>
+aud_play_pause();
+
+function changeImage(playing)
+{
+	if(playing) {
+		
+		return false;
+	} else {
+		
+		return false;
+	}
+}
+
+function aud_play_pause() {
+  var sstv_audio = document.getElementById("sstv_audio");
+  if (sstv_audio.paused) {
+  	sstv_audio.currentTime = 0;
+    sstv_audio.play();
+    changeImage(true);
+  } else {
+    sstv_audio.pause();
+    changeImage(false);
+  }
+}
+</script>
       </div>
     </div>
     

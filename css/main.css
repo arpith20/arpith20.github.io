@@ -8,7 +8,8 @@ dl, dd, ol, ul, figure {
   padding: 0; }
 
 html {
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  overflow-x: hidden; }
 
 /**
  * Basic styling
