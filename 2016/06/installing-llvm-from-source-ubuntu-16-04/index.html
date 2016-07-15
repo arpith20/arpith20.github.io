@@ -9,6 +9,13 @@
   <meta name="description" content="A quick guide on installing LLVM and Clang on Ubuntu 16.04 with Ninja build system">
   <meta name="author" content="Arpith K">
 
+  
+
+  <meta property="og:title" content="Installing LLVM from Source on Ubuntu 16.04">
+  
+  <meta property="og:description" content="A quick guide on installing LLVM and Clang on Ubuntu 16.04 with Ninja build system">
+  <meta property="og:url" content="http://arpith.xyz/2016/06/installing-llvm-from-source-ubuntu-16-04/">
+
   <link rel="stylesheet" href="http://arpith.xyz/css/main.css" | prepend: site.baseurl }}">
   <link rel="canonical" href="http://arpith.xyz/2016/06/installing-llvm-from-source-ubuntu-16-04/">
   <link rel="alternate" type="application/atom+xml" title="Arpith K" href="http://arpith.xyz/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
@@ -59,7 +66,7 @@
 			
 			
 				<li>
-					<a href="http://arpith.xyz/tags/">tags</a>
+					<a href="http://arpith.xyz/tag/">tags</a>
 				</li>			
 			
 			
@@ -231,7 +238,7 @@ This controls which targets is built and linked into llc.</p>
 
     <p>The various values that this semicolon delimited list can include  are <code class="highlighter-rouge">AArch64, AMDGPU, ARM, BPF, Hexagon, Mips, MSP430, NVPTX, PowerPC, Sparc, SystemZ, X86, XCore</code>.</p>
 
-    <p>Here, in the example, I choose to use <code class="highlighter-rouge">AArch64</code> as my target. The list is set to LLVM_ALL_TARGETS as default. Doing this however, increases the build time considerably.</p>
+    <p>Here, in the example, I choose to use <code class="highlighter-rouge">AArch64</code> as my target. You can set <code class="highlighter-rouge">LLVM_TARGETS_TO_BUILD=host</code> instead. The list is set to LLVM_ALL_TARGETS as default. Doing this however, increases the build time considerably.</p>
   </li>
   <li>
     <p>CMAKE_INSTALL_PREFIX <br />
