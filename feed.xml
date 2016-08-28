@@ -6,8 +6,8 @@
 </description>
     <link>http://arpith.xyz/</link>
     <atom:link href="http://arpith.xyz/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 15 Jul 2016 20:09:34 +0530</pubDate>
-    <lastBuildDate>Fri, 15 Jul 2016 20:09:34 +0530</lastBuildDate>
+    <pubDate>Sun, 28 Aug 2016 18:15:47 +0530</pubDate>
+    <lastBuildDate>Sun, 28 Aug 2016 18:15:47 +0530</lastBuildDate>
     <generator>Jekyll v3.1.2</generator>
     
       <item>
@@ -21,7 +21,7 @@
 &lt;center&gt;
 &lt;figure&gt;
   &lt;a href=&quot;/assets/blog/pokemon/mock_location_fail.png&quot;&gt;
-  	&lt;img src=&quot;/assets/blog/pokemon/mock_location_fail.png&quot; alt=&quot;Mock Location Fail&quot; height=&quot;500px&quot; /&gt;
+  	&lt;img src=&quot;/assets/blog/pokemon/mock_location_fail.jpg&quot; alt=&quot;Mock Location Fail&quot; height=&quot;500px&quot; /&gt;
   &lt;/a&gt;
   &lt;figcaption align=&quot;center&quot;&gt;:(&lt;/figcaption&gt;
 &lt;/figure&gt;
@@ -79,7 +79,7 @@ I found &lt;a href=&quot;https://play.google.com/store/apps/details?id=ru.gavrik
 &lt;center&gt;
 &lt;figure&gt;
   &lt;a href=&quot;/assets/blog/pokemon/mock_location_win.png&quot;&gt;
-  	&lt;img src=&quot;/assets/blog/pokemon/mock_location_win.png&quot; alt=&quot;Mock Location Win!&quot; height=&quot;500px&quot; /&gt;
+  	&lt;img src=&quot;/assets/blog/pokemon/mock_location_win.jpg&quot; alt=&quot;Mock Location Win!&quot; height=&quot;500px&quot; /&gt;
   &lt;/a&gt;
   &lt;figcaption align=&quot;center&quot;&gt;:D&lt;/figcaption&gt;
 &lt;/figure&gt;
