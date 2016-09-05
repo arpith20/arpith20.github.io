@@ -11,10 +11,16 @@
 
   
 
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@_arpith" />
+  <meta name="twitter:creator" content="@_arpith" />
+
   <meta property="og:title" content="Getting Started with PintOS">
   
   <meta property="og:description" content="This guide walks you through a series of steps to get you started working on PintOS projects">
   <meta property="og:url" content="http://arpith.xyz/2016/01/getting-started-with-pintos/">
+  
+  <meta property="fb:app_id" content="1289467297738605">
 
   <link rel="stylesheet" href="http://arpith.xyz/css/main.css" | prepend: site.baseurl }}">
   <link rel="canonical" href="http://arpith.xyz/2016/01/getting-started-with-pintos/">
@@ -119,14 +125,14 @@
     <div class="page-content">
       <div class="wrapper">
         <div class="post">
-  <br>
-  <header class="post-header">
-    <h1 class="post-title">Getting Started with PintOS</h1>
-    <p class="post-meta">Jan 20, 2016 • Arpith K</p>
-  </header>
+	<br>
+	<header class="post-header">
+		<h1 class="post-title">Getting Started with PintOS</h1>
+		<p class="post-meta">Jan 20, 2016 • Arpith K</p>
+	</header>
 
-  <article class="post-content">
-    <p>This guide walks you through a series of steps to get you started working on <a href="https://web.stanford.edu/class/cs140/projects/pintos/pintos_1.html" target="_blank">PintOS</a>.</p>
+	<article class="post-content">
+		<p>This guide walks you through a series of steps to get you started working on <a href="https://web.stanford.edu/class/cs140/projects/pintos/pintos_1.html" target="_blank">PintOS</a>.</p>
 
 <p>Pintos is a simple operating system framework that supports very basic features. The objective is to strengthen the functionality of this OS. This involves working on various aspects of an operating system including:</p>
 
@@ -287,12 +293,75 @@ Now, Insert the line <code>outw( 0x604, 0x0 | 0x2000 );</code>  after <code>prin
 
 <p>All the best! See you on the other side :P</p>
 
-  </article>
+	</article>
 
+	<!-- Social Button HTML -->
 
+	<style>
+		h2.comments {
+			display: inline-block;
+		}
+		.share-btn {
+			display: inline-block;
+			color: #B0B0B0;
+			border: none;
+			padding: 0.2em;
+			width: 1.7em;
+			opacity: 0.9;
+			outline: none;
+			text-align: center;
+			float: right;
+		}
+		.share-btn:active {
+			position: relative;
+			top: 2px;
+			box-shadow: none;
+			color: #B0B0B0;
+			outline: none;
+		}
+		.share-btn:hover {
+			position: relative;
+			top: -2px;
+			box-shadow: none;
+			color: #B0B0B0;
+			outline: none;
+		}
+		a.share-btn:visited {
+			color:#B0B0B0;
+		}
+
+	</style>
+
+	
 	<hr/>
 	<br/>
-	<h2> Comments </h2>
+	<h2 class="comments"> Comments </h2>
+
+
+	<!-- Print -->
+	<a href="javascript:;" onclick="window.print()" class="share-btn">
+		<i class="fa fa-print"></i>
+	</a>
+
+	<!-- Google Plus -->
+	<a href="https://plus.google.com/share?url=http://arpith.xyz/2016/01/getting-started-with-pintos/" target="_blank" class="share-btn"
+		onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+		<i class="fa fa-google-plus"></i>
+	</a>
+
+	<!-- Facebook -->
+	<a href="http://www.facebook.com/sharer/sharer.php?u=http://arpith.xyz/2016/01/getting-started-with-pintos/" target="_blank" class="share-btn"
+		onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+		<i class="fa fa-facebook"></i>
+	</a>
+
+	<!-- Twitter -->
+	<a href="http://twitter.com/share?url=http://arpith.xyz/2016/01/getting-started-with-pintos/&text=Getting Started with PintOS --" target="_blank" class="share-btn"
+		onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+
 	<div id="disqus_thread"></div>
 	<script>
 	/**
@@ -306,15 +375,15 @@ Now, Insert the line <code>outw( 0x604, 0x0 | 0x2000 );</code>  after <code>prin
 	};
 	*/
 	(function() { // DON'T EDIT BELOW THIS LINE
-	var d = document, s = d.createElement('script');
+		var d = document, s = d.createElement('script');
 
-	s.src = '//arpith.disqus.com/embed.js';
+		s.src = '//arpith.disqus.com/embed.js';
 
-	s.setAttribute('data-timestamp', +new Date());
-	(d.head || d.body).appendChild(s);
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
 	})();
-	</script>
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 </div>
 

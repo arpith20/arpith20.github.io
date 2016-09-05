@@ -14,12 +14,18 @@
   <meta name="thumbnail" content="http://arpith.xyz/assets/blog/pokemon/pokemon_go.jpg" />
   
 
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@_arpith" />
+  <meta name="twitter:creator" content="@_arpith" />
+
   <meta property="og:title" content="Modifying the Android Source to Cheat in Pokémon GO">
   
   <meta property="og:image" content="http://arpith.xyz/assets/blog/pokemon/pokemon_go.jpg">
   
   <meta property="og:description" content="A tutorial on how to modify the android source code to cheat in Pokemon Go">
   <meta property="og:url" content="http://arpith.xyz/2016/07/modifying-android-source-to-cheat-in-pokemon-go/">
+  
+  <meta property="fb:app_id" content="1289467297738605">
 
   <link rel="stylesheet" href="http://arpith.xyz/css/main.css" | prepend: site.baseurl }}">
   <link rel="canonical" href="http://arpith.xyz/2016/07/modifying-android-source-to-cheat-in-pokemon-go/">
@@ -124,14 +130,14 @@
     <div class="page-content">
       <div class="wrapper">
         <div class="post">
-  <br>
-  <header class="post-header">
-    <h1 class="post-title">Modifying the Android Source to Cheat in Pokémon GO</h1>
-    <p class="post-meta">Jul 15, 2016 • Arpith K</p>
-  </header>
+	<br>
+	<header class="post-header">
+		<h1 class="post-title">Modifying the Android Source to Cheat in Pokémon GO</h1>
+		<p class="post-meta">Jul 15, 2016 • Arpith K</p>
+	</header>
 
-  <article class="post-content">
-    <p>Most Android devices have an ability to enable mock locations under developer options. As the name would suggest, it can be used to specify a different location from where you actually are.</p>
+	<article class="post-content">
+		<p>Most Android devices have an ability to enable mock locations under developer options. As the name would suggest, it can be used to specify a different location from where you actually are.</p>
 
 <p>This is perfect for Pokemon Go! Theoretically, one could spoof the location and let a bot do all the walking from the comfort of the couch.</p>
 
@@ -214,12 +220,75 @@ Download <a href="https://www.androidfilehost.com/?fid=24591000424947374" target
 <b>PS:</b> <br />
 Well, all said and done, I would still recommend that you play this game the way developers intended it to. Pokemon Go is all about exploring your surroundings and interacting with friends in creative ways. There’s really no fun in letting a bot do this for you.</p>
 
-  </article>
+	</article>
 
+	<!-- Social Button HTML -->
 
+	<style>
+		h2.comments {
+			display: inline-block;
+		}
+		.share-btn {
+			display: inline-block;
+			color: #B0B0B0;
+			border: none;
+			padding: 0.2em;
+			width: 1.7em;
+			opacity: 0.9;
+			outline: none;
+			text-align: center;
+			float: right;
+		}
+		.share-btn:active {
+			position: relative;
+			top: 2px;
+			box-shadow: none;
+			color: #B0B0B0;
+			outline: none;
+		}
+		.share-btn:hover {
+			position: relative;
+			top: -2px;
+			box-shadow: none;
+			color: #B0B0B0;
+			outline: none;
+		}
+		a.share-btn:visited {
+			color:#B0B0B0;
+		}
+
+	</style>
+
+	
 	<hr/>
 	<br/>
-	<h2> Comments </h2>
+	<h2 class="comments"> Comments </h2>
+
+
+	<!-- Print -->
+	<a href="javascript:;" onclick="window.print()" class="share-btn">
+		<i class="fa fa-print"></i>
+	</a>
+
+	<!-- Google Plus -->
+	<a href="https://plus.google.com/share?url=http://arpith.xyz/2016/07/modifying-android-source-to-cheat-in-pokemon-go/" target="_blank" class="share-btn"
+		onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+		<i class="fa fa-google-plus"></i>
+	</a>
+
+	<!-- Facebook -->
+	<a href="http://www.facebook.com/sharer/sharer.php?u=http://arpith.xyz/2016/07/modifying-android-source-to-cheat-in-pokemon-go/" target="_blank" class="share-btn"
+		onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+		<i class="fa fa-facebook"></i>
+	</a>
+
+	<!-- Twitter -->
+	<a href="http://twitter.com/share?url=http://arpith.xyz/2016/07/modifying-android-source-to-cheat-in-pokemon-go/&text=Modifying the Android Source to Cheat in Pokémon GO --" target="_blank" class="share-btn"
+		onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+		<i class="fa fa-twitter"></i>
+	</a>
+
+
 	<div id="disqus_thread"></div>
 	<script>
 	/**
@@ -233,15 +302,15 @@ Well, all said and done, I would still recommend that you play this game the way
 	};
 	*/
 	(function() { // DON'T EDIT BELOW THIS LINE
-	var d = document, s = d.createElement('script');
+		var d = document, s = d.createElement('script');
 
-	s.src = '//arpith.disqus.com/embed.js';
+		s.src = '//arpith.disqus.com/embed.js';
 
-	s.setAttribute('data-timestamp', +new Date());
-	(d.head || d.body).appendChild(s);
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
 	})();
-	</script>
-	<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 </div>
 
