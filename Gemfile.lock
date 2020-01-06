@@ -16,7 +16,7 @@ GEM
     execjs (2.7.0)
     faraday (0.15.0)
       multipart-post (>= 1.2, < 3)
-    ffi (1.9.23)
+    ffi (1.11.3)
     forwardable-extended (2.6.0)
     html_press (0.8.2)
       htmlentities
